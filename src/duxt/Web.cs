@@ -2,8 +2,9 @@ namespace duxt;
 
 public static class Web
 {
-    public static Page Create()
+    public static string Create()
     {
-        return new(new());
+        Html html= new();
+        return html.Display();
     }
 }

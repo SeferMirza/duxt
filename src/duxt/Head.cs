@@ -6,7 +6,7 @@ public class Head(Dictionary<string, string> _elements)
     {
         return @$"
         <head>
-            {string.Join("\n", _elements)}
+
         </head>
         ";
     }

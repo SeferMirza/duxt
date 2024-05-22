@@ -1,10 +1,4 @@
 namespace duxt;
 
-public class Html(Component slot, string @class, string id, Styles styles) : Component(slot, @class, id, styles)
-{
-
-    public override string Display()
-    {
-        return string.Empty;
-    }
-}
+public class Html(Component? slot = default, string? @class = default, string? id = default, Styles? styles = default)
+    : Component(slot, @class, id, "Html", styles);
