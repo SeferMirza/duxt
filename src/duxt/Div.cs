@@ -1,4 +1,4 @@
 ﻿namespace duxt;
 
-public class Div(Component slot, string @class, string id, Styles styles)
+public class Div(List<Component>? slot = default, string? @class = default, string? id = default, Styles? styles = default)
     : Component(slot, @class, id, "div", styles);

@@ -1,4 +1,4 @@
 namespace duxt;
 
-public class Html(Component? slot = default, string? @class = default, string? id = default, Styles? styles = default)
-    : Component(slot, @class, id, "Html", styles);
+public class Html(Head head, Body body)
+    : Component([head, body], default, default, "html", default);

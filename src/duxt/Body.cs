@@ -1,4 +1,4 @@
 namespace duxt;
 
-public class Body(Component slot, string @class, string id, Styles styles)
-    : Component(slot, @class, id, "body", styles);
+public class Body(List<Component>? slot = default, string? @class = default, string? id = default, Styles? styles = default)
+    : Component(slot ?? [], @class, id, "body", styles);

@@ -1,13 +1,14 @@
 namespace duxt;
 
 public class Head(Dictionary<string, string> _elements)
+    : Component()
 {
-    public string Display()
+    public override string Display()
     {
-        return @$"
-        <head>
-
-        </head>
-        ";
+        var elementsAsComponent = _elements?.Select(e => $"<{e.Key}>{e.Value}</{e.Key}>");
+        var elementsAsString = elementsAsComponent != null ? string.Join("\n", elementsAsComponent) : string.Empty;
+        return @$"<head>
+    {elementsAsString}
+</head>";
     }
 }

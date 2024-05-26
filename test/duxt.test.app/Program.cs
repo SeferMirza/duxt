@@ -1,8 +1,8 @@
-using duxt;
+using duxt.app.pages;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => Results.Content(Profile.Page, "text/html"));
 
 app.Run();
