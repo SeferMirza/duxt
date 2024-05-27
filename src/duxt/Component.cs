@@ -1,3 +1,5 @@
+using System.Xml.Linq;
+
 namespace duxt;
 
 public abstract class Component(List<Component> slot, string? @class, string? id, string? tag, Styles? styles)
@@ -19,8 +21,9 @@ public abstract class Component(List<Component> slot, string? @class, string? id
         var elementClass = Class != default ? $" class=\"{Class}\"" : string.Empty;
         var elementId = Id != default ? $" id=\"{Id}\"" : string.Empty;
 
-        return @$"<{Tag}{elementClass}{elementId}>
+        return XDocument.Parse(@$"
+<{Tag}{elementClass}{elementId}>
     {slotDisplayString}
-</{Tag}>";
+</{Tag}>").ToString();
     }
 }
