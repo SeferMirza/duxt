@@ -5,8 +5,6 @@ public class Text(string text, string? @class = default)
 {
     public override string Display()
     {
-        return @$"
-            {text}
-        ";
+        return @$"{text}";
     }
 }

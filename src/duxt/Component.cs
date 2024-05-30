@@ -18,12 +18,13 @@ public abstract class Component(List<Component> slot, string? @class, string? id
     {
         var slotDisplays = Slot?.Select(s => s.Display());
         var slotDisplayString = slotDisplays != null ? string.Join("\n", slotDisplays) : string.Empty;
-        var elementClass = Class != default ? $" class=\"{Class}\"" : string.Empty;
-        var elementId = Id != default ? $" id=\"{Id}\"" : string.Empty;
+        var elementClass = Class != default ? $"class=\"{Class}\"" : string.Empty;
+        var elementId = Id != default ? $"id=\"{Id}\"" : string.Empty;
 
-        return XDocument.Parse(@$"
-<{Tag}{elementClass}{elementId}>
-    {slotDisplayString}
-</{Tag}>").ToString();
+        return XElement.Parse(
+            $"<{Tag} {elementClass} {elementId}>" +
+            slotDisplayString +
+            $"</{Tag}>"
+        ).ToString();
     }
 }

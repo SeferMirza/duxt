@@ -12,9 +12,10 @@ public class Head(Dictionary<string, string> _elements)
             ? string.Join("\n", elementsAsComponent)
             : string.Empty;
 
-        return XDocument.Parse(@$"
-<head>
-    {elementsAsString}
-</head>").ToString();
+        return XElement.Parse(
+            "<head>" +
+            elementsAsString +
+            "</head>"
+        ).ToString();
     }
 }
