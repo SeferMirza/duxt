@@ -12,7 +12,7 @@ public abstract class Component(List<Component> slot, string? @class, string? id
 
     public Component()
         : this([], default!, default!, default!, default) {}
-    public Component(Component? slot, string @class = "", string id = "", string tag = "div", Styles? styles = default)
+    public Component(Component slot, string @class = "", string id = "", string tag = "div", Styles? styles = default)
         : this([slot], @class, id, tag, styles) {}
     public virtual string Display()
     {

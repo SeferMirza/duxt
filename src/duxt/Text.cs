@@ -1,6 +1,6 @@
 namespace duxt;
 
-public class Text(string text, string? @class = default)
+public class Text(string text)
     : Component()
 {
     public override string Display()
