@@ -20,9 +20,10 @@ public abstract class Component(List<Component> slot, string? @class, string? id
         var slotDisplayString = slotDisplays != null ? string.Join("\n", slotDisplays) : string.Empty;
         var elementClass = Class != default ? $"class=\"{Class}\"" : string.Empty;
         var elementId = Id != default ? $"id=\"{Id}\"" : string.Empty;
+        var stylesDisplay = styles != default ? $"style=\"{Styles.DisplayXDirection()}\"" : string.Empty;
 
         return XElement.Parse(
-            $"<{Tag} {elementClass} {elementId}>" +
+            $"<{Tag} {elementClass} {elementId} {stylesDisplay}>" +
             slotDisplayString +
             $"</{Tag}>"
         ).ToString();

@@ -7,25 +7,38 @@ public class FullPageTest
     public void DisplayTest()
     {
         var expected =
-@$"<html>
+@"<html>
   <head>
     <title>duxt test</title>
   </head>
   <body>
-    <div>duxt</div>
-    <div>test</div>
+    <div class=""duxtClass"" id=""duxtId"">duxt</div>
+    <div class=""testClass"" id=""testId"" style=""text-align: center;"">test</div>
   </body>
+  <style>
+    .duxtClass {
+      color: red;
+    }
+  </style>
 </html>";
         var page = new Html(
             head: new Head(new() { {"title", "duxt test"} }),
             body: new Body([
-                new Div([
-                    new Text("duxt")
-                ]),
-                new Div([
-                    new Text("test")
-                ])
-            ])
+                new Div(
+                    slot: [ new Text("duxt") ],
+                    @class: "duxtClass",
+                    id: "duxtId"
+                ),
+                new Div(
+                    slot: [ new Text("test") ],
+                    @class: "testClass",
+                    id: "testId",
+                    styles: new() { TextAlign = "center" }
+                )
+            ]),
+            styles: new() {
+                {"duxtClass", new Styles { Color = "red" }}
+            }
         );
 
         var actual = page.Display();
