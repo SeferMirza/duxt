@@ -19,7 +19,7 @@ public static class Profile
             ]),
             styles: new() {
                 {"name", new Styles { Color = "red" }},
-                {"surname", new Styles { Color = "yellow" }}
+                {"surname",  new Styles { Color = "yellow" }}
             }
         ).Display()
     );
