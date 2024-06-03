@@ -1,4 +1,4 @@
-namespace duxt;
+namespace duxt.component;
 
 public class Text(string text)
     : Component()

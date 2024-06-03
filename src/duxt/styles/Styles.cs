@@ -1,8 +1,8 @@
-namespace duxt;
+namespace duxt.styles;
 
 public class Styles
 {
-    private List<(string, string)> _css = [];
+    private readonly List<(string, string)> _css = [];
     private string _alignItems = "left";
     private string _backgroundColor = "#000000";
     private string _color = "#FFFFFF";

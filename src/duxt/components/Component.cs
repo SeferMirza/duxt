@@ -1,6 +1,7 @@
 using System.Xml.Linq;
+using duxt.styles;
 
-namespace duxt;
+namespace duxt.component;
 
 public abstract class Component(List<Component> slot, string? @class, string? id, string? tag, Styles? styles)
 {

@@ -1,6 +1,7 @@
 using System.Xml.Linq;
+using duxt.styles;
 
-namespace duxt;
+namespace duxt.component;
 
 public class Html(Head head, Body body, Dictionary<string, Styles>? styles = default)
     : Component([head, body], default, default, "html", default)

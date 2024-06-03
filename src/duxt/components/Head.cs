@@ -1,6 +1,6 @@
 using System.Xml.Linq;
 
-namespace duxt;
+namespace duxt.component;
 
 public class Head(Dictionary<string, string> _elements)
     : Component()

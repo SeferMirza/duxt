@@ -1,3 +1,6 @@
+using duxt.component;
+using duxt.styles;
+
 namespace duxt;
 
 public static class ComponentExtensions
