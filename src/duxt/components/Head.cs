@@ -12,10 +12,6 @@ public class Head(Dictionary<string, string> _elements)
             ? string.Join("\n", elementsAsComponent)
             : string.Empty;
 
-        return XElement.Parse(
-            "<head>" +
-            elementsAsString +
-            "</head>"
-        ).ToString();
+        return $"<head> {elementsAsString} </head>".HtmlIndentation();
     }
 }

@@ -12,18 +12,25 @@ public class FullPageTest
         var expected =
 @"<html>
   <head>
-    <title>duxt test</title>
+    <title>
+      duxt test
+    </title>
   </head>
   <body>
-    <div class=""duxtClass"" id=""duxtId"">duxt</div>
-    <div class=""testClass"" id=""testId"" style=""text-align: center;"">test</div>
+    <div class=""duxtClass"" id=""duxtId"">
+      duxt
+    </div>
+    <div class=""testClass"" id=""testId"" style=""text-align: center;"">
+      test
+    </div>
   </body>
   <style>
     .duxtClass {
       color: red;
     }
   </style>
-</html>";
+</html>
+";
         var page = new Html(
             head: new Head(new() { {"title", "duxt test"} }),
             body: new Body([
@@ -58,16 +65,16 @@ public class FullPageTest
   </head>
   <body>
     <div>
-      asdasd
+      div 1
     </div>
     <div>
-      asdasd
+      div 2
     </div>
     <div>
-      asdasd
+      div 3
     </div>
     <div>
-      asdasd
+      div 4
     </div>
   </body>
   <style>
@@ -81,14 +88,14 @@ public class FullPageTest
 @"<html><head>
 </head>
     <body>
-  <div>asdasd</div>
-  <div>asdasd
+  <div>div 1</div>
+  <div>div 2
   </div>
   <div>
-  asdasd
+  div 3
   </div>
   <div>
-  asdasd</div>
+  div 4</div>
 </body>
 <style>    .duxtClass {
       color: red;

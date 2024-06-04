@@ -15,14 +15,12 @@ public class Html(Head head, Body body, Dictionary<string, Styles>? styles = def
     }}"))
             : string.Empty;
 
-        return XElement.Parse(
-@$"<html>
-  {head.Display()}
-  {body.Display()}
-  <style>
-    {stylesDisplay}
-  </style>
-</html>"
-        ).ToString();
+        return @$"<html>
+          {head.Display()}
+          {body.Display()}
+          <style>
+            {stylesDisplay}
+          </style>
+        </html>".HtmlIndentation();
     }
 }
