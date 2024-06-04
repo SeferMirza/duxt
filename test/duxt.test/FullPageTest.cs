@@ -1,3 +1,6 @@
+using duxt.component;
+using duxt.styles;
+
 namespace duxt.test;
 
 [TestFixture]
@@ -42,6 +45,58 @@ public class FullPageTest
         );
 
         var actual = page.Display();
+
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void FormatterTest()
+    {
+        var expected =
+@"<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      asdasd
+    </div>
+    <div>
+      asdasd
+    </div>
+    <div>
+      asdasd
+    </div>
+    <div>
+      asdasd
+    </div>
+  </body>
+  <style>
+    .duxtClass {
+      color: red;
+    }
+  </style>
+</html>
+";
+        var test =
+@"<html><head>
+</head>
+    <body>
+  <div>asdasd</div>
+  <div>asdasd
+  </div>
+  <div>
+  asdasd
+  </div>
+  <div>
+  asdasd</div>
+</body>
+<style>    .duxtClass {
+      color: red;
+    }
+</style>
+ </html>";
+
+        var actual = test.HtmlIndentation();
 
         Assert.That(actual, Is.EqualTo(expected));
     }
