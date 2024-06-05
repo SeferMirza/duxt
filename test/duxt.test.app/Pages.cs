@@ -1,3 +1,4 @@
+using duxt.app.components;
 using duxt.component;
 using duxt.styles;
 
@@ -46,73 +47,23 @@ public static class Pages
                                     new Div(
                                         @class: "projects",
                                         slot: [
-                                            new Div(
-                                                @class: "card",
-                                                slot: [
-                                                    new Img(
-                                                        @class: "card-img",
-                                                        src: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg"
-                                                    ),
-                                                    new Div(
-                                                        @class: "container",
-                                                        slot: [
-                                                            new H4(text: "Project Title"),
-                                                            new P(text: "Project description goes here. It's a brief intro to the project."),
-                                                            new A(text: "Learn More", href: "projectLink.html", @class: "btn")
-                                                        ]
-                                                    )
-                                                ]
+                                            new Card(
+                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                title: "Project Title",
+                                                text: "Project description goes here. It's a brief intro to the project.",
+                                                link: "projectLink.html"
                                             ),
-                                            new Div(
-                                                @class: "card",
-                                                slot: [
-                                                    new Img(
-                                                        @class: "card-img",
-                                                        src: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg"
-                                                    ),
-                                                    new Div(
-                                                        @class: "container",
-                                                        slot: [
-                                                            new H4(text: "Project Title"),
-                                                            new P(text: "Project description goes here. It's a brief intro to the project."),
-                                                            new A(text: "Learn More", href: "projectLink.html", @class: "btn")
-                                                        ]
-                                                    )
-                                                ]
+                                            new Card(
+                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                title: "Project Title",
+                                                text: "Project description goes here. It's a brief intro to the project.",
+                                                link: "projectLink.html"
                                             ),
-                                            new Div(
-                                                @class: "card",
-                                                slot: [
-                                                    new Img(
-                                                        @class: "card-img",
-                                                        src: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg"
-                                                    ),
-                                                    new Div(
-                                                        @class: "container",
-                                                        slot: [
-                                                            new H4(text: "Project Title"),
-                                                            new P(text: "Project description goes here. It's a brief intro to the project."),
-                                                            new A(text: "Learn More", href: "projectLink.html", @class: "btn")
-                                                        ]
-                                                    )
-                                                ]
-                                            ),
-                                            new Div(
-                                                @class: "card",
-                                                slot: [
-                                                    new Img(
-                                                        @class: "card-img",
-                                                        src: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg"
-                                                    ),
-                                                    new Div(
-                                                        @class: "container",
-                                                        slot: [
-                                                            new H4(text: "Project Title"),
-                                                            new P(text: "Project description goes here. It's a brief intro to the project."),
-                                                            new A(text: "Learn More", href: "projectLink.html", @class: "btn")
-                                                        ]
-                                                    )
-                                                ]
+                                            new Card(
+                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                title: "Project Title",
+                                                text: "Project description goes here. It's a brief intro to the project.",
+                                                link: "projectLink.html"
                                             )
                                         ]
                                     )
