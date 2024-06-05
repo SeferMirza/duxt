@@ -32,7 +32,7 @@ public class FullPageTest
 </html>
 ";
         var page = new Html(
-            head: new Head(new() { {"title", "duxt test"} }),
+            head: new Head([ ("title", "duxt test") ]),
             body: new Body([
                 new Div(
                     slot: [ new Text("duxt") ],
