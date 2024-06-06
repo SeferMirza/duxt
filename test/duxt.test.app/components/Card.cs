@@ -3,7 +3,8 @@ using duxt.styles;
 
 namespace duxt.app.components;
 
-public class Card(string imgSrc, string title, string text, string link, Styles? styles = default) : Component(
+public class Card(string imgSrc, string title, string text, string link, Styles? styles = default)
+    : Component(
         slot: [
                 new Img(
                     @class: "card-img",
@@ -22,6 +23,5 @@ public class Card(string imgSrc, string title, string text, string link, Styles?
         id: default,
         tag: "div",
         styles: styles
-        )
-{
-}
+    )
+{ }

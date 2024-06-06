@@ -36,8 +36,15 @@ public static class Pages
                             new Div(
                                 @class: "about-container centered-content column",
                                 slot: [
-                                    new H2("About"),
-                                    new Text("I'm a Software Engineer :)")
+                                    new H2("About this blog"),
+                                    new Text("Welcome to my website. Here you can see the projects I have developed, what I have learned, and the posts I have published during this process. As long as I do not lose my enthusiasm and curiosity for learning, I will continue to publish what I learn and develop here.")
+                                ]
+                            ),
+                            new Div(
+                                @class: "about-container centered-content column",
+                                slot: [
+                                    new H2("About me"),
+                                    new Text("My name is Sefer Mirza. I am a Software Engineer. I graduated from the Software Engineering department at Celal Bayar University.")
                                 ]
                             ),
                             new Div(
@@ -48,19 +55,19 @@ public static class Pages
                                         @class: "projects",
                                         slot: [
                                             new Card(
-                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                imgSrc: "./images/code.jpg",
                                                 title: "Project Title",
                                                 text: "Project description goes here. It's a brief intro to the project.",
                                                 link: "projectLink.html"
                                             ),
                                             new Card(
-                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                imgSrc: "./images/code.jpg",
                                                 title: "Project Title",
                                                 text: "Project description goes here. It's a brief intro to the project.",
                                                 link: "projectLink.html"
                                             ),
                                             new Card(
-                                                imgSrc: "https://singularity.gs/wp-content/uploads/2018/04/css.jpg",
+                                                imgSrc: "./images/code.jpg",
                                                 title: "Project Title",
                                                 text: "Project description goes here. It's a brief intro to the project.",
                                                 link: "projectLink.html"
@@ -76,23 +83,23 @@ public static class Pages
                                     new Div(
                                         @class: "articles",
                                         slot: [
-                                            new Div(
-                                                @class: "article",
-                                                slot: [
-                                                    new Div(
-                                                        @class: "article-img",
-                                                        slot: [ ]
-                                                    )
-                                                ]
+                                            new Card(
+                                                imgSrc: "./images/article.png",
+                                                title: "Article Title",
+                                                text: "Article description goes here. It's a brief intro to the article.",
+                                                link: "projectLink.html"
                                             ),
-                                            new Div(
-                                                @class: "article",
-                                                slot: [
-                                                    new Div(
-                                                        @class: "article-img",
-                                                        slot: [ ]
-                                                    )
-                                                ]
+                                            new Card(
+                                                imgSrc: "./images/article.png",
+                                                title: "Article Title",
+                                                text: "Article description goes here. It's a brief intro to the article.",
+                                                link: "projectLink.html"
+                                            ),
+                                            new Card(
+                                                imgSrc: "./images/article.png",
+                                                title: "Article Title",
+                                                text: "Article description goes here. It's a brief intro to the article.",
+                                                link: "projectLink.html"
                                             )
                                         ]
                                     )
@@ -118,7 +125,10 @@ public static class Pages
                 {
                     "banner",  new Styles {
                         Height = "20vh",
-                        Width = "100%"
+                        Width = "100%",
+                        BackgroundImage = "url(\"./images/code.jpg\")",
+                        BackgroundRepeat = "no-repeat",
+                        BackgroundSize = "cover"
                     }
                 },
                 {
@@ -130,10 +140,12 @@ public static class Pages
                 },
                 {
                     "about-container",  new Styles {
+                        Width = "78%"
                     }
                 },
                 {
                     "projects-container", new Styles {
+                        Width = "80%"
                     }
                 },
                 {
@@ -154,6 +166,7 @@ public static class Pages
                 },
                 {
                     "articles-container", new Styles {
+                        Width = "80%"
                     }
                 },
                 {
@@ -182,8 +195,7 @@ public static class Pages
                     "card", new Styles {
                         BoxShadow = "0 4px 8px 0 rgba(255,255,255,0.2)",
                         Transition = "0.3s",
-                        MinWidth = "10vw",
-                        MaxWidth = "15vw",
+                        Width = "24vw",
                         BorderRadius = "5px",
                         Margin = "10px"
                     }
