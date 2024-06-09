@@ -19,9 +19,11 @@ public class Card(string imgSrc, string title, string text, string link, Styles?
                     ]
                 )
             ],
-        @class: "card",
-        id: default,
-        tag: "div",
+        properties: new (
+            "div",
+            "card",
+            default
+        ),
         styles: styles
     )
 { }
