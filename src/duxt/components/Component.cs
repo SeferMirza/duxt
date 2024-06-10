@@ -23,6 +23,6 @@ public abstract class Component(List<Component> slot, Properties properties, Sty
 
         return @$"<{Properties.Tag}{elementClass}{elementId}{stylesDisplay}>
             {slotDisplayString}
-            </{Properties.Tag}>".HtmlIndentation();
+            </{Properties.Tag}>";
     }
 }

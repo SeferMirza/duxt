@@ -1,4 +1,5 @@
 using duxt;
+using duxt.app.pages;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);

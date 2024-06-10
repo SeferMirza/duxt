@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace duxt;
@@ -35,7 +36,7 @@ public static class Extensions
         {
             string item = stack.Pop();
 
-            if((IsClosingTag(item) || IsContent(item)) && IsClosingTag(cacheLastElement))
+            if((IsClosingTag(item) || IsContent(item)) && IsClosingTag(cacheLastElement) && cacheLastElement != "</style>")
             {
                 indent++;
             }
@@ -47,13 +48,77 @@ public static class Extensions
             {
                 indent--;
             }
+            else if(IsContent(item) && cacheLastElement == "</style>")
+            {
+                indent++;
+                item = item.CssIndentation();
+            }
 
-            result = $"{new string(' ', indent * 2)}{item}{Environment.NewLine}{result}";
+            var lines = item.Split("\n").Reverse().ToArray();
+            foreach((var line, int index) in lines.Select((line, index) => (line, index)))
+            {
+                result = $"{new string(' ', indent * 2)}{lines[index]}{Environment.NewLine}{result}";
+            }
 
             cacheLastElement = item;
         }
 
         return result;
+    }
+
+    public static string CssIndentation(this string css)
+    {
+        css = css.Replace("\r\n", "\n").Replace("\r", "\n");
+
+        string[] lines = css.Split('\n');
+        int indent = 0;
+        string indentString = "  ";
+        for (int i = 0; i < lines.Length; i++)
+        {
+            lines[i] = lines[i].Trim();
+
+            if (lines[i].EndsWith("}"))
+            {
+                indent--;
+            }
+
+            lines[i] = new string(' ', indent * indentString.Length) + lines[i];
+
+            if (lines[i].EndsWith("{"))
+            {
+                indent++;
+            }
+        }
+
+        return string.Join("\n", lines);
+    }
+
+    public static void PublishHtmlFile(this string content, string fileName, string path)
+    {
+        string filePath = Path.Combine(path, fileName);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        using FileStream fs = File.Create(filePath);
+        byte[] info = new UTF8Encoding(true).GetBytes(content);
+        fs.Write(info, 0, info.Length);
+    }
+
+    public static string AlsoPublishHtmlFile(this string content, string fileName, string path)
+    {
+        string filePath = Path.Combine(path, fileName);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        using FileStream fs = File.Create(filePath);
+        byte[] info = new UTF8Encoding(true).GetBytes(content);
+        fs.Write(info, 0, info.Length);
+
+        return content;
     }
 
     static bool IsOpeningTag(string str) => str.StartsWith('<') && !str.StartsWith("</");

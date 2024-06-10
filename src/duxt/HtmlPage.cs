@@ -19,10 +19,10 @@ public sealed class HtmlPage
             <html>
                 <head>
                     {_context.HeadElements.PropertyElements.HtmlView()}
-                    { _context.HeadElements.Links.HtmlView()}
+                    {_context.HeadElements.Links.HtmlView()}
                 </head>
                 <body>
-                    {bodyComponent.Invoke(_context)}
+                    {bodyComponent.Invoke(_context).Display()}
                 </body>
                 <style>
                     {_context.Styles.HtmlView()}

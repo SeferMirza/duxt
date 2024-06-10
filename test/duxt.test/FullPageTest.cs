@@ -1,11 +1,32 @@
 using duxt.component;
-using duxt.styles;
 
 namespace duxt.test;
 
 [TestFixture]
-public class FullPageTest
+public class StyleGeneration
 {
+    class TestComponent()
+    : Component(
+        [
+            new Div(slot: [new Text("duxt")], @class: "duxtClass", id: "duxtId"),
+            new Div(slot: [new Text("test")], @class: "testClass", id: "testId", styles: new() { TextAlign = "center" })
+        ],
+        new("div", default, default),
+        default
+    ) { }
+
+    class TestPage : IBodyComponent
+    {
+        public Component Invoke(HtmlContext context)
+        {
+            context.Styles.Add([
+              (".duxtClass", new(){ Color = "red" }),
+            ]);
+
+            return new TestComponent();
+        }
+    }
+
     [Test]
     public void DisplayTest()
     {
@@ -17,11 +38,13 @@ public class FullPageTest
     </title>
   </head>
   <body>
-    <div class=""duxtClass"" id=""duxtId"">
-      duxt
-    </div>
-    <div class=""testClass"" id=""testId"" style=""text-align: center;"">
-      test
+    <div>
+      <div class=""duxtClass"" id=""duxtId"">
+        duxt
+      </div>
+      <div class=""testClass"" id=""testId"" style=""text-align: center;"">
+        test
+      </div>
     </div>
   </body>
   <style>
@@ -31,27 +54,11 @@ public class FullPageTest
   </style>
 </html>
 ";
-        var page = new Html(
-            head: new Head([ ("title", "duxt test") ]),
-            body: new Body([
-                new Div(
-                    slot: [ new Text("duxt") ],
-                    @class: "duxtClass",
-                    id: "duxtId"
-                ),
-                new Div(
-                    slot: [ new Text("test") ],
-                    @class: "testClass",
-                    id: "testId",
-                    styles: new() { TextAlign = "center" }
-                )
-            ]),
-            styles: new() {
-                {"duxtClass", new Styles { Color = "red" }}
-            }
-        );
+        var builder = Builder
+          .CreateHtml()
+          .Head(headElements => headElements.PropertyElements.Add("title", "duxt test"));
 
-        var actual = page.Display();
+        var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }

@@ -1,6 +1,9 @@
+
+using duxt.component;
+
 namespace duxt;
 
 public interface IBodyComponent
 {
-    string Invoke(HtmlContext context);
+    Component Invoke(HtmlContext context);
 }
