@@ -28,14 +28,11 @@ public class StyleGeneration
     }
 
     [Test]
-    public void DisplayTest()
+    public void Display_all_item_correctly()
     {
         var expected =
 @"<html>
   <head>
-    <title>
-      duxt test
-    </title>
   </head>
   <body>
     <div>
@@ -54,9 +51,7 @@ public class StyleGeneration
   </style>
 </html>
 ";
-        var builder = Builder
-          .CreateHtml()
-          .Head(headElements => headElements.PropertyElements.Add("title", "duxt test"));
+        var builder = Builder.CreateHtml();
 
         var actual = builder.Slot<TestPage>();
 
@@ -64,7 +59,7 @@ public class StyleGeneration
     }
 
     [Test]
-    public void FormatterTest()
+    public void Formatter_fix_indentation()
     {
         var expected =
 @"<html>

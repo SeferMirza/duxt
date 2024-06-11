@@ -14,10 +14,15 @@ public class LinkElements
         Links.Add((href, rel));
     }
 
+    public void Add(List<(string href, string rel)> values)
+    {
+        values.ForEach(x => Links.Add((x.href, x.rel)));
+    }
+
     public string HtmlView()
     {
         var linksAsHeadElement = Links.Select(e =>
-            $"<link href=\"{e.href}\" rel=\"{e.rel}\"></link>"
+            $"<link href=\"{e.href}\" rel=\"{e.rel}\">"
         );
 
         var linksAsHtmlView = linksAsHeadElement != null

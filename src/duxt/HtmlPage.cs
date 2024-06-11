@@ -18,8 +18,9 @@ public sealed class HtmlPage
         return @$"
             <html>
                 <head>
-                    {_context.HeadElements.PropertyElements.HtmlView()}
+                    {_context.HeadElements.Title.HtmlView()}
                     {_context.HeadElements.Links.HtmlView()}
+                    {_context.HeadElements.Metas.HtmlView()}
                 </head>
                 <body>
                     {bodyComponent.Invoke(_context).Display()}

@@ -2,6 +2,7 @@ namespace duxt.styles;
 
 public class Styles
 {
+    #region fields
     private readonly List<(string, object)> _css = [];
     private string _alignItems = "left";
     private string _alignContent = "left";
@@ -162,7 +163,8 @@ public class Styles
     private string _wordBreak = "none";
     private string _wordSpacing = "none";
     private string _wordWrap = "none";
-
+    #endregion
+    #region properties
     public string AlignItems
     {
         get { return _alignItems; }
@@ -1435,7 +1437,7 @@ public class Styles
             _textAlign = value;
         }
     }
-
+    #endregion
     public string DisplayYDirection() => DisplayStyles("\n");
 
     public string DisplayXDirection() => DisplayStyles(" ");

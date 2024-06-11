@@ -3,11 +3,13 @@ namespace duxt.head;
 public class HeadElements
 {
     public LinkElements Links { get; }
-    public PropertyElements PropertyElements { get; }
+    public MetaELements Metas { get; }
+    public TitleElement Title { get; set;}
 
     public HeadElements()
     {
         Links = new();
-        PropertyElements = new();
+        Metas = new();
+        Title = new("Duxt");
     }
 }
