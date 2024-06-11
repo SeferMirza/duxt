@@ -14,6 +14,7 @@ public sealed class HtmlPage
     public string Slot<T>() where T : IBodyComponent, new()
     {
         var bodyComponent = new T() as IBodyComponent;
+        var displayedBodyComponent = bodyComponent.Invoke(_context).Display();
 
         return @$"
             <html>
@@ -23,7 +24,7 @@ public sealed class HtmlPage
                     {_context.HeadElements.Metas.HtmlView()}
                 </head>
                 <body>
-                    {bodyComponent.Invoke(_context).Display()}
+                    {displayedBodyComponent}
                 </body>
                 <style>
                     {_context.Styles.HtmlView()}

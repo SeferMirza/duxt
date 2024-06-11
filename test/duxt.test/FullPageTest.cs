@@ -21,6 +21,16 @@ public class StyleGeneration
         {
             context.Styles.Add([
               (".duxtClass", new(){ Color = "red" }),
+              (".test", new(){ AlignItems = "center" }),
+            ]);
+            context.HeadElements.Title = "Test";
+            context.HeadElements.Links.Add([
+              (href: "styles1.css", rel: "stylesheet"),
+              (href: "styles2.css", rel: "stylesheet"),
+            ]);
+            context.HeadElements.Metas.Add([
+              (name: "og", content: "duxt", property: "og:title"),
+              (name: "og", content: "duxt.jpg", property: "og:image"),
             ]);
 
             return new TestComponent();
@@ -34,8 +44,12 @@ public class StyleGeneration
 @"<html>
   <head>
     <title>
-      Duxt
+      Test
     </title>
+    <link href=""styles1.css"" rel=""stylesheet"">
+    <link href=""styles2.css"" rel=""stylesheet"">
+    <meta name=""og"" content=""duxt"" property=""og:title"">
+    <meta name=""og"" content=""duxt.jpg"" property=""og:image"">
   </head>
   <body>
     <div>
@@ -50,6 +64,9 @@ public class StyleGeneration
   <style>
     .duxtClass {
       color: red;
+    }
+    .test {
+      align-items: center;
     }
   </style>
 </html>
@@ -70,6 +87,10 @@ public class StyleGeneration
     <title>
       Duxt
     </title>
+    <link href=""styles1.css"" rel=""stylesheet"">
+    <link href=""styles2.css"" rel=""stylesheet"">
+    <meta name=""og"" content=""duxt"" property=""og:title"">
+    <meta name=""og"" content=""someimage.com"" property=""og:image"">
   </head>
   <body>
     <div>
@@ -94,9 +115,10 @@ public class StyleGeneration
 ";
         var test =
 @"<html><head>
-    <title>
-      Duxt
-    </title>
+    <title>Duxt
+</title><link href=""styles1.css"" rel=""stylesheet"">
+         <link href=""styles2.css"" rel=""stylesheet""><meta name=""og"" content=""duxt"" property=""og:title"">
+<meta name=""og"" content=""someimage.com"" property=""og:image"">
 </head>
     <body>
   <div>div 1</div>
