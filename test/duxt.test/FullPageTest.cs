@@ -33,6 +33,9 @@ public class StyleGeneration
         var expected =
 @"<html>
   <head>
+    <title>
+      Duxt
+    </title>
   </head>
   <body>
     <div>
@@ -64,6 +67,9 @@ public class StyleGeneration
         var expected =
 @"<html>
   <head>
+    <title>
+      Duxt
+    </title>
   </head>
   <body>
     <div>
@@ -88,6 +94,9 @@ public class StyleGeneration
 ";
         var test =
 @"<html><head>
+    <title>
+      Duxt
+    </title>
 </head>
     <body>
   <div>div 1</div>

@@ -22,8 +22,11 @@ public class HeadGenerationTest
         var expected =
 @"<html>
   <head>
-    <link rel=""stylesheet"" href=""styles1.css"">
-    <link rel=""stylesheet"" href=""styles2.css"">
+    <title>
+      Duxt
+    </title>
+    <link href=""styles1.css"" rel=""stylesheet"">
+    <link href=""styles2.css"" rel=""stylesheet"">
   </head>
   <body>
   </body>
@@ -35,7 +38,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Links.Add([("style1.css", "stylesheet"), ("style2.css", "stylesheet")]));
+                headElement.Links.Add([("styles1.css", "stylesheet"), ("styles2.css", "stylesheet")]));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -47,7 +50,10 @@ public class HeadGenerationTest
         var expected =
 @"<html>
   <head>
-    <link rel=""stylesheet"" href=""styles1.css"">
+    <title>
+      Duxt
+    </title>
+    <link href=""styles1.css"" rel=""stylesheet"">
   </head>
   <body>
   </body>
@@ -59,7 +65,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Links.Add("style1.css", "stylesheet"));
+                headElement.Links.Add("styles1.css", "stylesheet"));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -71,7 +77,10 @@ public class HeadGenerationTest
         var expected =
 @"<html>
   <head>
-    <meta name="""" content=""duxt"" property=""og:title"">
+    <title>
+      Duxt
+    </title>
+    <meta name=""og"" content=""duxt"" property=""og:title"">
   </head>
   <body>
   </body>
@@ -83,7 +92,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Metas.Add("og:title", "duxt"));
+                headElement.Metas.Add(name: "og", property: "og:title", content: "duxt"));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -95,8 +104,11 @@ public class HeadGenerationTest
         var expected =
 @"<html>
   <head>
-    <meta name="""" content=""duxt"" property=""og:title"">
-    <meta name="""" content=""someimage.com"" property=""og:image"">
+    <title>
+      Duxt
+    </title>
+    <meta name=""og"" content=""duxt"" property=""og:title"">
+    <meta name=""og"" content=""someimage.com"" property=""og:image"">
   </head>
   <body>
   </body>

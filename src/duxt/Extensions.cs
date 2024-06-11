@@ -53,6 +53,14 @@ public static class Extensions
                 indent++;
                 item = item.CssIndentation();
             }
+            else if(IsVoidOrSelfClosing(item))
+            {
+                indent += IsClosingTag(cacheLastElement)
+                    ? 1
+                    : IsVoidOrSelfClosing(cacheLastElement)
+                        ? 0
+                        : -1;
+            }
 
             var lines = item.Split("\n").Reverse().ToArray();
             foreach((var line, int index) in lines.Select((line, index) => (line, index)))
@@ -121,7 +129,8 @@ public static class Extensions
         return content;
     }
 
-    static bool IsOpeningTag(string str) => str.StartsWith('<') && !str.StartsWith("</");
+    static bool IsOpeningTag(string str) => str.StartsWith('<') && !str.StartsWith("</") && !IsVoidOrSelfClosing(str);
     static bool IsClosingTag(string str) => str.StartsWith("</");
     static bool IsContent(string str) => !str.StartsWith('<');
+    static bool IsVoidOrSelfClosing(string str) => str.StartsWith("<meta") || str.StartsWith("<link") || str.StartsWith("<img");
 }

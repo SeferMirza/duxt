@@ -33,6 +33,9 @@ public class StyleGenerationTest
         var expected =
 @"<html>
   <head>
+    <title>
+      Duxt
+    </title>
   </head>
   <body>
   </body>
