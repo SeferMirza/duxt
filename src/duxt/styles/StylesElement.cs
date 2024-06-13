@@ -16,10 +16,7 @@ public class StylesElement
 
     public void Add(List<(string styleName, Styles styles)> styleList)
     {
-        foreach(var style in styleList)
-        {
-            Styles.Add((style.styleName, style.styles));
-        }
+        Styles.AddRange(styleList);
     }
 
     public string HtmlView()

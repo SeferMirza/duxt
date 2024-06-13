@@ -19,6 +19,12 @@ app.UseStaticFiles(new StaticFileOptions
         Path.Combine(Directory.GetCurrentDirectory(), "images")),
     RequestPath = "/images"
 });
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "scripts")),
+    RequestPath = "/scripts"
+});
 
 app.MapGet("/", () => Results.Content(page.Slot<IndexPage>(), "text/html"));
 
