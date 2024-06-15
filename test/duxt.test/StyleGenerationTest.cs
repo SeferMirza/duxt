@@ -1,5 +1,4 @@
 using duxt.component;
-using duxt.styles;
 
 namespace duxt.test;
 
