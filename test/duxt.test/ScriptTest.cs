@@ -8,7 +8,7 @@ public class ScriptTest
     class TestComponent : Component;
     class TestPage : IBodyComponent
     {
-        public Component Invoke(HtmlContext context)
+        public Component Invoke(HtmlContext context, HttpClient client)
         {
             context.Scripts.Add("test.js");
 

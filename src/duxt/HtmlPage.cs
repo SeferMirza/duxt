@@ -5,10 +5,12 @@ namespace duxt;
 public sealed class HtmlPage
 {
     public readonly HtmlContext Context;
+    public readonly HttpClient Client;
 
     public HtmlPage()
     {
         Context = new();
+        Client = new();
     }
 
     public string Slot<T>() where T : IBodyComponent, new()
@@ -16,7 +18,7 @@ public sealed class HtmlPage
         var bodyComponent = new T() as IBodyComponent;
         // BodyComponents must be called before context.HeadElement is displayed
         // because the Title, Links and Metas can be added in the BodyComponent.
-        var displayedBodyComponent = bodyComponent.Invoke(Context).Display();
+        var displayedBodyComponent = bodyComponent.Invoke(Context, Client).Display();
 
         return @$"
             <html>

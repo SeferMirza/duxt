@@ -13,7 +13,7 @@ public class HeadGenerationTest
 
     class TestPage : IBodyComponent
     {
-        public Component Invoke(HtmlContext context) => new EmptyComponent();
+        public Component Invoke(HtmlContext context, HttpClient client) => new EmptyComponent();
     }
 
     [Test]

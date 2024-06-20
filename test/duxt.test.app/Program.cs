@@ -3,6 +3,7 @@ using duxt.app.pages;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var app = builder.Build();
 var htmlPage = Builder.CreateHtml();
 var page = htmlPage.Head(headElements =>

@@ -17,7 +17,7 @@ public class StyleGeneration
 
     class TestPage : IBodyComponent
     {
-        public Component Invoke(HtmlContext context)
+        public Component Invoke(HtmlContext context, HttpClient client)
         {
             context.Styles.Add([
               (".duxtClass", new(){ Color = "red" }),
