@@ -11,7 +11,7 @@ public static class Extensions
         Stack<string> stack = new();
         string patternThatCheckEndWithGT = @"(?<=>)";
         string patternThatCheckStartWithLT = @"^</?\w+";
-        string patternThatCheckhLT = @"(?=<)";
+        string patternThatCheckLT = @"(?=<)";
         string[] parts = Regex.Split(html, patternThatCheckEndWithGT);
 
         foreach(var line in parts)
@@ -22,7 +22,7 @@ public static class Extensions
             bool isMatch = Regex.IsMatch(trimmedLine, patternThatCheckStartWithLT);
             if(!isMatch)
             {
-                var splitTextAndElement = Regex.Split(trimmedLine, patternThatCheckhLT);
+                var splitTextAndElement = Regex.Split(trimmedLine, patternThatCheckLT);
                 trimmedLine = splitTextAndElement[1].Trim();
                 stack.Push(splitTextAndElement[0].Trim());
             }

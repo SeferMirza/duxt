@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="81.2601 75.17 361.4324 499.3352" width="361.432" height="499.335" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="VT323">@import url(https://fonts.googleapis.com/css2?family=VT323%3Aital%2Cwght%400%2C400&amp;display=swap);</style>
+  </defs>
+  <text style="fill: rgba(255, 255, 255, 0.925); font-family: VT323; font-size: 161.108px; font-weight: 700; letter-spacing: 7.2px; text-anchor: middle; text-transform: uppercase; word-spacing: 100px; white-space: pre;" transform="matrix(2.522472858428955, 0, 0, 3.103508949279785, -384.3190612792969, -654.4928588867188)" x="256.215" y="363.824">C#</text>
+</svg>

@@ -5,32 +5,41 @@ namespace duxt.test;
 [TestFixture]
 public class StyleGeneration
 {
-    class TestComponent()
-    : Component(
-        [
-            new Div(slot: [new Text("duxt")], @class: "duxtClass", id: "duxtId"),
-            new Div(slot: [new Text("test")], @class: "testClass", id: "testId", styles: new() { TextAlign = "center" })
-        ],
-        new("div", default, default),
-        default
-    ) { }
-
-    class TestPage : IBodyComponent
+    class TestComponent : Component
     {
-        public Component Invoke(HtmlContext context, HttpClient client)
+        public override List<IComponent>? Slot { get; set; } = [
+            new Div
+            {
+              Slot = [new Text("duxt")],
+              Class = "duxtClass",
+              Id = "duxtId"
+            },
+            new Div
+            {
+              Slot = [new Text("test")],
+              Class = "testClass",
+              Id = "testId",
+              Styles = new() { TextAlign = "center" }
+            },
+        ];
+    };
+
+    class TestPage : IBodyContent
+    {
+        public IComponent Invoke(HtmlContext context, HttpClient client)
         {
             context.Styles.Add([
               (".duxtClass", new(){ Color = "red" }),
               (".test", new(){ AlignItems = "center" }),
             ]);
-            context.HeadElements.Title = "Test";
-            context.HeadElements.Links.Add([
-              (href: "styles1.css", rel: "stylesheet"),
-              (href: "styles2.css", rel: "stylesheet"),
+            context.HeadElements.Title = new(title:"Test");
+            context.HeadElements.Links.AddRange([
+              new(href: "styles1.css", rel: "stylesheet"),
+              new(href: "styles2.css", rel: "stylesheet")
             ]);
-            context.HeadElements.Metas.Add([
-              (name: "og", content: "duxt", property: "og:title"),
-              (name: "og", content: "duxt.jpg", property: "og:image"),
+            context.HeadElements.Metas.AddRange([
+              new(name: "og", content: "duxt", property: "og:title"),
+              new(name: "og", content: "duxt.jpg", property: "og:image"),
             ]);
 
             return new TestComponent();

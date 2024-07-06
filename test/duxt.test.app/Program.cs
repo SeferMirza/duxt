@@ -8,10 +8,10 @@ var app = builder.Build();
 var htmlPage = Builder.CreateHtml();
 var page = htmlPage.Head(headElements =>
 {
-    headElements.Links.Add(href: "https://fonts.googleapis.com", rel: "preconnect");
-    headElements.Links.Add(href: "https://fonts.gstatic.com", rel: "preconnect");
-    headElements.Links.Add(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet");
-    headElements.Title = "duxt";
+    headElements.Links.Add(new(href: "https://fonts.googleapis.com", rel: "preconnect"));
+    headElements.Links.Add(new(href: "https://fonts.gstatic.com", rel: "preconnect"));
+    headElements.Links.Add(new(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet"));
+    headElements.Title = new("duxt");
 });
 
 app.UseStaticFiles(new StaticFileOptions

@@ -1,6 +1,8 @@
-using duxt.styles;
-
 namespace duxt.component;
 
-public class H2(string text, string? @class = default, string? id = default, Styles? styles = default)
-    : Component(new Text(text), new("h2", @class, id), styles);
+public class H2(string text)
+    : Component
+{
+    public override string Tag { get; } = "h2";
+    public override List<IComponent>? Slot { get; set; } = [new Text(text)];
+}

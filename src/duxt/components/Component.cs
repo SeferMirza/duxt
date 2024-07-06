@@ -1,28 +1,43 @@
 using duxt.styles;
+using duxt.templates;
 
 namespace duxt.component;
 
-public abstract class Component(List<Component> slot, Properties properties, Styles? styles)
+public abstract class Component : IComponent
 {
-    public List<Component> Slot { get; } = slot;
-    public Properties Properties { get; } = properties;
-    public Styles Styles { get; } = styles ?? new();
+    public virtual string Tag { get; } = "div";
+    public virtual List<IComponent>? Slot { get; set; } = [];
+    public virtual string? Class { get; set; } = default;
+    public virtual string? Id { get; set; } = default;
+    public virtual Styles? Styles { get; set; } = default;
+    public virtual Dictionary<string, string> OtherProperties { get; set; } = [];
 
-    public Component()
-        : this([], new("div", default, default) , default) {}
-    public Component(Component slot, Properties properties, Styles? styles = default)
-        : this([slot], properties, styles) {}
+    public bool IsVoid =>
+        Tag == "area" ||
+        Tag == "base" ||
+        Tag == "br" ||
+        Tag == "col" ||
+        Tag == "command" ||
+        Tag == "embed" ||
+        Tag == "hr" ||
+        Tag == "img" ||
+        Tag == "input" ||
+        Tag == "keygen" ||
+        Tag == "link" ||
+        Tag == "meta" ||
+        Tag == "param" ||
+        Tag == "source" ||
+        Tag == "track" ||
+        Tag == "wbr";
+    public bool IsSelfClose => !IsVoid && Slot == null;
 
     public virtual string Display()
     {
-        var slotDisplays = Slot?.Select(s => s.Display());
-        var slotDisplayString = slotDisplays != null ? string.Join("\n", slotDisplays) : string.Empty;
-        var elementClass = Properties.Class != default ? $" class=\"{Properties.Class}\"" : string.Empty;
-        var elementId = Properties.Id != default ? $" id=\"{Properties.Id}\"" : string.Empty;
-        var stylesDisplay = styles != default ? $" style=\"{Styles.DisplayXDirection()}\"" : string.Empty;
+        string result;
+        if (IsVoid) result = this.VoidElement();
+        else if(IsSelfClose) result = this.SelfCloseElement();
+        else result = this.OpenCloseElement();
 
-        return @$"<{Properties.Tag}{elementClass}{elementId}{stylesDisplay}>
-            {slotDisplayString}
-            </{Properties.Tag}>";
+        return result;
     }
 }

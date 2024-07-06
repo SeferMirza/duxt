@@ -10,8 +10,12 @@ public class Projects : Component
 {
     private readonly HttpClient _client;
 
+    public override string Tag { get; } = "div";
+    public override string? Class { get; set; } = "projects-container centered-content column";
+    public override List<IComponent>? Slot { get; set; } = [new H1("My Projects")];
+
     public Projects(HttpClient client)
-        : base([new H2("My Projects")], new("div", "projects-container centered-content column", default), default)
+        : base()
     {
         _client = client;
         _client.BaseAddress = new Uri("https://api.github.com/");
@@ -19,15 +23,22 @@ public class Projects : Component
 
     public override string Display()
     {
-        List<Component> projects = GetProjects();
-        Slot.Add(new Div(slot: projects, @class: "projects"));
+        List<IComponent> projects = GetProjects();
+        Slot?.Add(
+            new Div
+            {
+                Slot = projects,
+                Class = "projects"
+            }
+        );
 
         return base.Display();
     }
 
-    List<Component> GetProjects()
+    List<IComponent> GetProjects()
     {
-        List<Component> result = [];
+        //https://api.github.com/repos/SeferMirza/AutomatMachine/languages
+        List<IComponent> result = [];
         List<string> pinnedProject = GetPinned(user: "SeferMirza");
 
         _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
@@ -35,31 +46,40 @@ public class Projects : Component
         _client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
 
         Console.WriteLine("sending request to {0}{1}", _client.BaseAddress, "users/sefermirza/repos");
-        var response = _client.GetAsync("users/sefermirza/repos").Result;
-        Console.WriteLine("response: {0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
-
-        if (response.IsSuccessStatusCode)
+        var repositories = _client.GetAsync("users/sefermirza/repos").Result;
+        Console.WriteLine("response: {0} ({1})", (int)repositories.StatusCode, repositories.ReasonPhrase);
+        try
         {
-            var responseAsString = response.Content.ReadAsStringAsync().Result;
-            dynamic[] responseAsObject = JsonSerializer.Deserialize<ExpandoObject[]>(responseAsString)!;
-            foreach (var repository in responseAsObject.Where(r => pinnedProject.Any(p => p == r.name.GetString())))
+            if (repositories.IsSuccessStatusCode)
             {
-                // Every repository object is JsonElement and if you get string value
-                // u must be use GetString Method
-                // look here: https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsonelement.getstring?view=net-8.0
-                result.Add(
-                    new Card(
-                        "./images/code.jpg",
-                        repository.name.GetString(),
-                        repository.full_name.GetString(),
-                        repository.html_url.GetString()
-                    )
-                );
+                var responseAsString = repositories.Content.ReadAsStringAsync().Result;
+                dynamic[] responseAsObject = JsonSerializer.Deserialize<ExpandoObject[]>(responseAsString)!;
+                foreach (var repository in responseAsObject.Where(r => pinnedProject.Any(p => p == r.name.GetString())))
+                {
+                    var repositoryLanguages = _client.GetAsync($"repos/SeferMirza/{repository.name.GetString()}/languages").Result.Content.ReadAsStringAsync().Result;
+                    var mainLanguage = JsonSerializer.Deserialize<Dictionary<string, int>>(repositoryLanguages)?.FirstOrDefault().Key;
+
+                    // Every repository object is JsonElement and if you get string value
+                    // u must be use GetString Method
+                    // look here: https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsonelement.getstring?view=net-8.0
+                    result.Add(
+                        new Card(
+                            repository.name.GetString(),
+                            mainLanguage,
+                            "",
+                            repository.html_url.GetString()
+                        )
+                    );
+                }
+            }
+            else
+            {
+                result.Add(new H4("No Project Found!"));
             }
         }
-        else
+        catch (Exception ex)
         {
-            result.Add(new H4("No Project Found!"));
+            Console.WriteLine(ex.Message);
         }
 
         return result;

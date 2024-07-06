@@ -5,6 +5,6 @@ namespace duxt;
 
 public interface IHtmlContext
 {
-    HeadElements HeadElements { get; }
+    HeadBlock HeadElements { get; }
     StylesElement Styles { get; }
 }

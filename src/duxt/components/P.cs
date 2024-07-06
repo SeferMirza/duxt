@@ -1,6 +1,8 @@
-using duxt.styles;
-
 namespace duxt.component;
 
-public class P(string text, string? @class = default, string? id = default, Styles? styles = default)
-    : Component(new Text(text), new("p", @class, id), styles);
+public class P(string text)
+    : Component
+{
+    public override string Tag { get;} = "p";
+    public override List<IComponent>? Slot { get; set; } = [new Text(text)];
+}

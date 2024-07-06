@@ -6,7 +6,7 @@ namespace duxt;
 
 public class HtmlContext : IHtmlContext
 {
-    public HeadElements HeadElements { get; }
+    public HeadBlock HeadElements { get; }
     public StylesElement Styles { get; }
     public ScriptsElement Scripts { get; set; }
 

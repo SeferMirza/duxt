@@ -11,9 +11,9 @@ public class HeadGenerationTest
         public override string Display() => string.Empty;
     }
 
-    class TestPage : IBodyComponent
+    class TestPage : IBodyContent
     {
-        public Component Invoke(HtmlContext context, HttpClient client) => new EmptyComponent();
+        public IComponent Invoke(HtmlContext context, HttpClient client) => new EmptyComponent();
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Links.Add([("styles1.css", "stylesheet"), ("styles2.css", "stylesheet")]));
+                headElement.Links.AddRange([new("styles1.css", "stylesheet"), new("styles2.css", "stylesheet")]));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -65,7 +65,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Links.Add("styles1.css", "stylesheet"));
+                headElement.Links.Add(new("styles1.css", "stylesheet")));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -92,7 +92,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Metas.Add(name: "og", property: "og:title", content: "duxt"));
+                headElement.Metas.Add(new(name: "og", property: "og:title", content: "duxt")));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -120,7 +120,7 @@ public class HeadGenerationTest
         var builder = Builder
             .CreateHtml()
             .Head(headElement =>
-                headElement.Metas.Add([("og", "duxt", "og:title"), ("og", "someimage.com", "og:image")]));
+                headElement.Metas.AddRange([new("og", "duxt", "og:title"), new("og", "someimage.com", "og:image")]));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -145,7 +145,7 @@ public class HeadGenerationTest
 
         var builder = Builder
             .CreateHtml()
-            .Head(headElement => headElement.Title = "duxt");
+            .Head(headElement => headElement.Title = new("duxt"));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));

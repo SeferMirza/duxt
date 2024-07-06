@@ -3,9 +3,9 @@ using duxt.component;
 
 namespace duxt.app.pages;
 
-public class IndexPage : IBodyComponent
+public class IndexPage : IBodyContent
 {
-    public Component Invoke(HtmlContext context, HttpClient client)
+    public IComponent Invoke(HtmlContext context, HttpClient client)
     {
         context.Styles.Add(
             [
@@ -58,12 +58,17 @@ public class IndexPage : IBodyComponent
                 (".card", new() {
                     BoxShadow = "0 4px 8px 0 rgba(255,255,255,0.2)",
                     Transition = "0.3s",
-                    Width = "24vw",
+                    Width = "20vw",
                     BorderRadius = "5px",
-                    Margin = "10px"
+                    Margin = "10px",
+                    Display = "flex",
+                    AlignItems = "center",
+                    FlexDirection = "column",
+                    Overflow = "hidden"
                 }),
                 (".card:hover", new() { BoxShadow = "0 8px 16px 0 rgba(255,255,255)" }),
-                (".card-img", new() { Width = "100%", BorderRadius = "5px 5px 0 0" }),
+                (".card-title", new() { FontSize = "5vw", Margin = "0", Height = "200px", WhiteSpace = "nowrap" }),
+                (".card-content-container", new() { Width = "100%" }),
                 (".btn", new() {
                     Padding = "10px",
                     BackgroundColor = "#f0f0f0",
@@ -78,57 +83,33 @@ public class IndexPage : IBodyComponent
                 ("h1", new() { AlignContent = "center" })
             ]
         );
+        context.Scripts.Add("./scripts/main.js");
 
         return
-            new Div(
-                @class: "container monospace centered-content",
-                slot: [
+            new Div
+            {
+                Class = "container monospace centered-content",
+                Slot = [
                     new Banner("Sefer Mirza | FullStack Developer"),
-                    new Div(
-                        @class: "about-container centered-content column",
-                        slot: [
-                            new H2("About this blog"),
+                    new Div
+                    {
+                        Class = "about-container centered-content column",
+                        Slot = [
+                            new H1("About this blog"),
                             new Text("Welcome to my website. Here you can see the projects I have developed, what I have learned, and the posts I have published during this process. As long as I do not lose my enthusiasm and curiosity for learning, I will continue to publish what I learn and develop here.")
                         ]
-                    ),
-                    new Div(
-                        @class: "about-container centered-content column",
-                        slot: [
-                            new H2("About me"),
+                    },
+                    new Div
+                    {
+                        Class = "about-container centered-content column",
+                        Slot = [
+                            new H1("About me"),
                             new Text("My name is Sefer Mirza. I am a Software Engineer. I graduated from the Software Engineering department at Celal Bayar University.")
                         ]
-                    ),
+                    },
                     new Projects(client),
-                    new Div(
-                        @class: "articles-container centered-content column",
-                        slot: [
-                            new H2("My Articles"),
-                            new Div(
-                                @class: "articles",
-                                slot: [
-                                    new Card(
-                                        imgSrc: "./images/article.png",
-                                        title: "Article Title",
-                                        text: "Article description goes here. It's a brief intro to the article.",
-                                        link: "projectLink.html"
-                                    ),
-                                    new Card(
-                                        imgSrc: "./images/article.png",
-                                        title: "Article Title",
-                                        text: "Article description goes here. It's a brief intro to the article.",
-                                        link: "projectLink.html"
-                                    ),
-                                    new Card(
-                                        imgSrc: "./images/article.png",
-                                        title: "Article Title",
-                                        text: "Article description goes here. It's a brief intro to the article.",
-                                        link: "projectLink.html"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
+                    new Articles()
                 ]
-            );
+            };
     }
 }

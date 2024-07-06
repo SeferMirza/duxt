@@ -6,9 +6,9 @@ namespace duxt.test;
 public class ScriptTest
 {
     class TestComponent : Component;
-    class TestPage : IBodyComponent
+    class TestPage : IBodyContent
     {
-        public Component Invoke(HtmlContext context, HttpClient client)
+        public IComponent Invoke(HtmlContext context, HttpClient client)
         {
             context.Scripts.Add("test.js");
 
@@ -34,6 +34,6 @@ public class ScriptTest
 
         string page = builder.Slot<TestPage>();
 
-        Assert.That(page.Contains(expected));
+        Assert.That(page, Does.Contain(expected));
     }
 }
