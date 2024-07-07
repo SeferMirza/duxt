@@ -19,7 +19,7 @@ public sealed class HtmlPage
         var bodyComponent = new T() as IBodyContent;
         // BodyComponents must be called before context.HeadElement is displayed
         // because the Title, Links and Metas can be added in the BodyComponent.
-        var displayedBodyComponent = bodyComponent.Invoke(Context, Client).Display();
+        var body = bodyComponent.Invoke(Context, Client);
         var html = new Html
         {
             Slot = [
@@ -29,28 +29,13 @@ public sealed class HtmlPage
                 },
                 new Body
                 {
-                    Slot = [bodyComponent.Invoke(Context, Client)]
+                    Slot = [body]
                 },
                 new Style(Context.Styles)
             ]
         };
 
         return html.Display();
-        // return @$"
-        //     <html>
-        //         <head>
-        //             {Context.HeadElements.Title.Display()}
-        //             {string.Join("\n", Context.HeadElements.Links.Select(l => l.Display()))}
-        //             {string.Join("\n", Context.HeadElements.Metas.Select(m => m.Display()))}
-        //         </head>
-        //         <body>
-        //             {displayedBodyComponent}
-        //             {Context.Scripts.HtmlView()}
-        //         </body>
-        //         <style>
-        //             {Context.Styles.HtmlView()}
-        //         </style>
-        //     </html>".HtmlIndentation();
     }
 
     public HtmlPage Head(Action<HeadBlock> action)
