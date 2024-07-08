@@ -37,11 +37,4 @@ public sealed class HtmlPage
 
         return html.Display();
     }
-
-    public HtmlPage Head(Action<HeadBlock> action)
-    {
-        action(Context.HeadElements);
-
-        return this;
-    }
 }

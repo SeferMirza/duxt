@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace duxt;
 
-public static class Extensions
+public static class IndentationExtensions
 {
     public static string HtmlIndentation(this string html)
     {

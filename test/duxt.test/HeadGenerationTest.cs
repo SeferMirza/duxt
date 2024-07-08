@@ -34,11 +34,9 @@ public class HeadGenerationTest
   </style>
 </html>
 ";
+        var builder = Builder.CreateHtml();
 
-        var builder = Builder
-            .CreateHtml()
-            .Head(headElement =>
-                headElement.Links.AddRange([new("styles1.css", "stylesheet"), new("styles2.css", "stylesheet")]));
+        builder.AddLinks([new("styles1.css", "stylesheet"), new("styles2.css", "stylesheet")]);
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -62,10 +60,9 @@ public class HeadGenerationTest
 </html>
 ";
 
-        var builder = Builder
-            .CreateHtml()
-            .Head(headElement =>
-                headElement.Links.Add(new("styles1.css", "stylesheet")));
+        var builder = Builder.CreateHtml();
+
+        builder.AddLink(new("styles1.css", "stylesheet"));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -88,11 +85,9 @@ public class HeadGenerationTest
   </style>
 </html>
 ";
+        var builder = Builder.CreateHtml();
 
-        var builder = Builder
-            .CreateHtml()
-            .Head(headElement =>
-                headElement.Metas.Add(new(name: "og", property: "og:title", content: "duxt")));
+        builder.AddMeta(new(name: "og", property: "og:title", content: "duxt"));
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -117,10 +112,9 @@ public class HeadGenerationTest
 </html>
 ";
 
-        var builder = Builder
-            .CreateHtml()
-            .Head(headElement =>
-                headElement.Metas.AddRange([new("og", "duxt", "og:title"), new("og", "someimage.com", "og:image")]));
+        var builder = Builder.CreateHtml();
+
+        builder.AddMetas([new("og", "duxt", "og:title"), new("og", "someimage.com", "og:image")]);
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -142,10 +136,9 @@ public class HeadGenerationTest
   </style>
 </html>
 ";
+        var builder = Builder.CreateHtml();
 
-        var builder = Builder
-            .CreateHtml()
-            .Head(headElement => headElement.Title = new("duxt"));
+        builder.SetTitle("duxt");
         var actual = builder.Slot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
