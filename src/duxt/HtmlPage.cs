@@ -1,20 +1,21 @@
 using duxt.component;
-using duxt.head;
 
 namespace duxt;
 
-public sealed class HtmlPage
+public sealed class WebSite
 {
-    public readonly HtmlContext Context;
+    public readonly WebContext Context;
     public readonly HttpClient Client;
+    public readonly Dictionary<Type, string> Bodies;
 
-    public HtmlPage()
+    public WebSite()
     {
         Context = new();
         Client = new();
+        Bodies = [];
     }
 
-    public string Slot<T>() where T : IBodyContent, new()
+    public void AddBodySlot<T>() where T : IBodyContent, new()
     {
         var bodyComponent = new T() as IBodyContent;
         // BodyComponents must be called before context.HeadElement is displayed
@@ -25,7 +26,7 @@ public sealed class HtmlPage
             Slot = [
                 new Head
                 {
-                    Slot = [Context.HeadElements.Title, .. Context.HeadElements.Links, .. Context.HeadElements.Metas]
+                    Slot = [Context.Heads.Title, .. Context.Heads.Links, .. Context.Heads.Metas]
                 },
                 new Body
                 {
@@ -35,6 +36,12 @@ public sealed class HtmlPage
             ]
         };
 
-        return html.Display();
+        Bodies.TryAdd(typeof(T), html.Display());
+    }
+
+    public string DisplayBody<T>() where T : IBodyContent
+    {
+        Bodies.TryGetValue(typeof(T), out string body);
+        return body;
     }
 }

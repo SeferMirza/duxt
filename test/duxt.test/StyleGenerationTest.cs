@@ -15,7 +15,7 @@ public class StyleGenerationTest
 
     class TestPage : IBodyContent
     {
-        public IComponent Invoke(HtmlContext context, HttpClient client)
+        public IComponent Invoke(WebContext context, HttpClient client)
         {
             context.Styles.Add([
               (".duxtTest", new(){ Color = "red" }),
@@ -51,7 +51,7 @@ public class StyleGenerationTest
 ";
         var builder = Builder.CreateHtml();
 
-        var actual = builder.Slot<TestPage>();
+        var actual = builder.AddBodySlot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }

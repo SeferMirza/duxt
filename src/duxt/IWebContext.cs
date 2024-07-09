@@ -3,8 +3,8 @@ using duxt.styles;
 
 namespace duxt;
 
-public interface IHtmlContext
+public interface IWebContext
 {
-    HeadBlock HeadElements { get; }
+    Heads Heads { get; }
     StylesElement Styles { get; }
 }

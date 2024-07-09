@@ -8,7 +8,7 @@ public class ScriptTest
     class TestComponent : Component;
     class TestPage : IBodyContent
     {
-        public IComponent Invoke(HtmlContext context, HttpClient client)
+        public IComponent Invoke(WebContext context, HttpClient client)
         {
             context.Scripts.Add("test.js");
 
@@ -21,7 +21,7 @@ public class ScriptTest
     {
         var builder = Builder.CreateHtml();
 
-        builder.Slot<TestPage>();
+        builder.AddBodySlot<TestPage>();
 
         Assert.That(builder.Context.Scripts.Scripts.Contains("test.js"));
     }
@@ -32,7 +32,7 @@ public class ScriptTest
         var expected = "<script src=\"test.js\">";
         var builder = Builder.CreateHtml();
 
-        string page = builder.Slot<TestPage>();
+        string page = builder.AddBodySlot<TestPage>();
 
         Assert.That(page, Does.Contain(expected));
     }

@@ -4,15 +4,15 @@ using duxt.styles;
 
 namespace duxt;
 
-public class HtmlContext : IHtmlContext
+public class WebContext : IWebContext
 {
-    public HeadBlock HeadElements { get; }
+    public Heads Heads { get; }
     public StylesElement Styles { get; }
     public ScriptsElement Scripts { get; set; }
 
-    public HtmlContext()
+    public WebContext()
     {
-        HeadElements = new();
+        Heads = new();
         Styles = new();
         Scripts = new();
     }

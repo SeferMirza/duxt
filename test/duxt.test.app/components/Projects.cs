@@ -18,7 +18,6 @@ public class Projects : Component
         : base()
     {
         _client = client;
-        _client.BaseAddress = new Uri("https://api.github.com/");
     }
 
     public override string Display()
@@ -41,12 +40,13 @@ public class Projects : Component
         List<IComponent> result = [];
         List<string> pinnedProject = GetPinned(user: "SeferMirza");
 
+        _client.DefaultRequestHeaders.Clear();
         _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         _client.DefaultRequestHeaders.Add("X-GitHub-Api-Version", "2022-11-28");
         _client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
 
         Console.WriteLine("sending request to {0}{1}", _client.BaseAddress, "users/sefermirza/repos");
-        var repositories = _client.GetAsync("users/sefermirza/repos").Result;
+        var repositories = _client.GetAsync("https://api.github.com/users/sefermirza/repos").Result;
         Console.WriteLine("response: {0} ({1})", (int)repositories.StatusCode, repositories.ReasonPhrase);
         try
         {
@@ -56,7 +56,7 @@ public class Projects : Component
                 dynamic[] responseAsObject = JsonSerializer.Deserialize<ExpandoObject[]>(responseAsString)!;
                 foreach (var repository in responseAsObject.Where(r => pinnedProject.Any(p => p == r.name.GetString())))
                 {
-                    var repositoryLanguages = _client.GetAsync($"repos/SeferMirza/{repository.name.GetString()}/languages").Result.Content.ReadAsStringAsync().Result;
+                    var repositoryLanguages = _client.GetAsync($"https://api.github.com/repos/SeferMirza/{repository.name.GetString()}/languages").Result.Content.ReadAsStringAsync().Result;
                     var mainLanguage = JsonSerializer.Deserialize<Dictionary<string, int>>(repositoryLanguages)?.FirstOrDefault().Key;
 
                     // Every repository object is JsonElement and if you get string value

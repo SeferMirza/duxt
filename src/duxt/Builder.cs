@@ -4,13 +4,13 @@ namespace duxt;
 
 public sealed class Builder
 {
-    public static HtmlPage CreateHtml(List<Link>? constantLinks = default, List<Meta>? constantMetas = default, Title? title = default)
+    public static WebSite CreateHtml(List<Link>? constantLinks = default, List<Meta>? constantMetas = default, Title? title = default)
     {
-        var page = new HtmlPage();
+        var page = new WebSite();
 
-        if (title != null) page.Context.HeadElements.Title = title;
-        if (constantLinks != null) page.Context.HeadElements.Links.AddRange(constantLinks);
-        if (constantMetas != null) page.Context.HeadElements.Metas.AddRange(constantMetas);
+        if (title != null) page.Context.Heads.Title = title;
+        if (constantLinks != null) page.Context.Heads.Links.AddRange(constantLinks);
+        if (constantMetas != null) page.Context.Heads.Metas.AddRange(constantMetas);
 
         return page;
     }

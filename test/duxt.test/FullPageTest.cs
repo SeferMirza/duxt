@@ -26,18 +26,18 @@ public class StyleGeneration
 
     class TestPage : IBodyContent
     {
-        public IComponent Invoke(HtmlContext context, HttpClient client)
+        public IComponent Invoke(WebContext context, HttpClient client)
         {
             context.Styles.Add([
               (".duxtClass", new(){ Color = "red" }),
               (".test", new(){ AlignItems = "center" }),
             ]);
-            context.HeadElements.Title = new(title:"Test");
-            context.HeadElements.Links.AddRange([
+            context.Heads.Title = new(title:"Test");
+            context.Heads.Links.AddRange([
               new(href: "styles1.css", rel: "stylesheet"),
               new(href: "styles2.css", rel: "stylesheet")
             ]);
-            context.HeadElements.Metas.AddRange([
+            context.Heads.Metas.AddRange([
               new(name: "og", content: "duxt", property: "og:title"),
               new(name: "og", content: "duxt.jpg", property: "og:image"),
             ]);
@@ -82,7 +82,7 @@ public class StyleGeneration
 ";
         var builder = Builder.CreateHtml();
 
-        var actual = builder.Slot<TestPage>();
+        var actual = builder.AddBodySlot<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }

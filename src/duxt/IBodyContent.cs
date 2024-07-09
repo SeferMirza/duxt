@@ -5,5 +5,5 @@ namespace duxt;
 
 public interface IBodyContent
 {
-    IComponent Invoke(HtmlContext context, HttpClient client);
+    IComponent Invoke(WebContext context, HttpClient client);
 }

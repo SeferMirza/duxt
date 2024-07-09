@@ -5,13 +5,15 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
-var htmlPage = Builder.CreateHtml();
-htmlPage.SetTitle("duxt");
-htmlPage.AddLinks([
+var web = Builder.CreateHtml();
+web.SetTitle("duxt");
+web.AddLinks([
     new(href: "https://fonts.googleapis.com", rel: "preconnect"),
     new(href: "https://fonts.gstatic.com", rel: "preconnect"),
     new(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet")
 ]);
+
+web.AddBodySlot<IndexPage>();
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -28,6 +30,6 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/scripts"
 });
 
-app.MapGet("/", () => Results.Content(htmlPage.Slot<IndexPage>(), "text/html"));
+app.MapGet("/", () => Results.Content(web.DisplayBody<IndexPage>(), "text/html"));
 
 app.Run();

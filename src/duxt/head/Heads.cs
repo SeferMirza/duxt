@@ -2,13 +2,13 @@ using duxt.component;
 
 namespace duxt.head;
 
-public class HeadBlock
+public class Heads
 {
     public List<Link> Links { get; }
     public List<Meta> Metas { get; }
     public Title Title { get; set;}
 
-    public HeadBlock()
+    public Heads()
     {
         Links = [];
         Metas = [];
