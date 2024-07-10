@@ -31,9 +31,10 @@ public class ScriptTest
     {
         var expected = "<script src=\"test.js\">";
         var builder = Builder.CreateHtml();
+        builder.AddBodySlot<TestPage>();
 
-        string page = builder.AddBodySlot<TestPage>();
+        var actual = builder.DisplayPage<TestPage>();
 
-        Assert.That(page, Does.Contain(expected));
+        Assert.That(actual, Does.Contain(expected));
     }
 }

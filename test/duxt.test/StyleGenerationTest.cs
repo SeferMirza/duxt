@@ -50,8 +50,9 @@ public class StyleGenerationTest
 </html>
 ";
         var builder = Builder.CreateHtml();
+        builder.AddBodySlot<TestPage>();
 
-        var actual = builder.AddBodySlot<TestPage>();
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }

@@ -1,4 +1,5 @@
 using duxt.component;
+using duxt.exception;
 
 namespace duxt;
 
@@ -6,13 +7,13 @@ public sealed class WebSite
 {
     public readonly WebContext Context;
     public readonly HttpClient Client;
-    public readonly Dictionary<Type, string> Bodies;
+    public readonly Dictionary<Type, string> Pages;
 
     public WebSite()
     {
         Context = new();
         Client = new();
-        Bodies = [];
+        Pages = [];
     }
 
     public void AddBodySlot<T>() where T : IBodyContent, new()
@@ -36,12 +37,12 @@ public sealed class WebSite
             ]
         };
 
-        Bodies.TryAdd(typeof(T), html.Display());
+        if(!Pages.TryAdd(typeof(T), html.Display()))
+        {
+            throw new BodyContentExists<T>();
+        }
     }
 
-    public string DisplayBody<T>() where T : IBodyContent
-    {
-        Bodies.TryGetValue(typeof(T), out string body);
-        return body;
-    }
+    public string DisplayPage<T>() where T : IBodyContent =>
+        Pages.TryGetValue(typeof(T), out string? page) ? page : throw new PageNotExists<T>();
 }

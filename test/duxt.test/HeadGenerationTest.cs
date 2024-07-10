@@ -37,7 +37,9 @@ public class HeadGenerationTest
         var builder = Builder.CreateHtml();
 
         builder.AddLinks([new("styles1.css", "stylesheet"), new("styles2.css", "stylesheet")]);
-        var actual = builder.AddBodySlot<TestPage>();
+        builder.AddBodySlot<TestPage>();
+
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -61,9 +63,10 @@ public class HeadGenerationTest
 ";
 
         var builder = Builder.CreateHtml();
-
         builder.AddLink(new("styles1.css", "stylesheet"));
-        var actual = builder.AddBodySlot<TestPage>();
+        builder.AddBodySlot<TestPage>();
+
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -88,7 +91,9 @@ public class HeadGenerationTest
         var builder = Builder.CreateHtml();
 
         builder.AddMeta(new(name: "og", property: "og:title", content: "duxt"));
-        var actual = builder.AddBodySlot<TestPage>();
+        builder.AddBodySlot<TestPage>();
+
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -115,7 +120,9 @@ public class HeadGenerationTest
         var builder = Builder.CreateHtml();
 
         builder.AddMetas([new("og", "duxt", "og:title"), new("og", "someimage.com", "og:image")]);
-        var actual = builder.AddBodySlot<TestPage>();
+        builder.AddBodySlot<TestPage>();
+
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -137,9 +144,10 @@ public class HeadGenerationTest
 </html>
 ";
         var builder = Builder.CreateHtml();
-
         builder.SetTitle("duxt");
-        var actual = builder.AddBodySlot<TestPage>();
+        builder.AddBodySlot<TestPage>();
+
+        var actual = builder.DisplayPage<TestPage>();
 
         Assert.That(actual, Is.EqualTo(expected));
     }

@@ -30,6 +30,6 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/scripts"
 });
 
-app.MapGet("/", () => Results.Content(web.DisplayBody<IndexPage>(), "text/html"));
+app.MapGet("/", () => Results.Content(web.DisplayPage<IndexPage>(), "text/html"));
 
 app.Run();
