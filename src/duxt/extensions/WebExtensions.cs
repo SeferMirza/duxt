@@ -22,6 +22,15 @@ public static class WebExtensions
         return page;
     }
 
+    public static WebSite AddScript(this WebSite page, string path) =>
+        page.AddScripts([path]);
+    public static WebSite AddScripts(this WebSite page, List<string> paths)
+    {
+        paths.ForEach(page.Context.Scripts.Add);
+
+        return page;
+    }
+
     public static WebSite SetTitle(this WebSite page, string title)
     {
         page.Context.Heads.Title = new(title);

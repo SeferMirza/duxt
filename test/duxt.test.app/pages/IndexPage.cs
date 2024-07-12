@@ -107,7 +107,7 @@ public class IndexPage : IBodyContent
                             new Text("My name is Sefer Mirza. I am a Software Engineer. I graduated from the Software Engineering department at Celal Bayar University.")
                         ]
                     },
-                    new Projects(client),
+                    new Projects(),
                     new Articles()
                 ]
             };

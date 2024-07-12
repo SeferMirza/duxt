@@ -1,5 +1,6 @@
 using duxt.component;
 using duxt.exception;
+using duxt.scripts;
 
 namespace duxt;
 
@@ -27,7 +28,7 @@ public sealed class WebSite
             Slot = [
                 new Head
                 {
-                    Slot = [Context.Heads.Title, .. Context.Heads.Links, .. Context.Heads.Metas]
+                    Slot = [Context.Heads.Title, .. Context.Heads.Links, .. Context.Heads.Metas, .. Context.Scripts.Scripts]
                 },
                 new Body
                 {

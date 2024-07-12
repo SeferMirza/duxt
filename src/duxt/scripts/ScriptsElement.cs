@@ -1,8 +1,10 @@
+using duxt.component;
+
 namespace duxt.scripts;
 
 public class ScriptsElement
 {
-    public readonly List<string> Scripts;
+    public readonly List<Script> Scripts;
 
     public ScriptsElement()
     {
@@ -11,19 +13,11 @@ public class ScriptsElement
 
     public void Add(string filePath)
     {
-        Scripts.Add(filePath);
+        Scripts.Add(new(filePath));
     }
 
     public void Add(List<string> filePaths)
     {
-        Scripts.AddRange(filePaths);
-    }
-
-    public string HtmlView()
-    {
-        var stylesHtmlView = string.Join("\n", Scripts.Select(script =>
-                $"<script src=\"{script}\"></script>"));
-
-        return stylesHtmlView;
+        filePaths.ForEach(f => Scripts.Add(new(f)));
     }
 }
