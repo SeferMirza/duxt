@@ -22,11 +22,11 @@ public static class WebExtensions
         return page;
     }
 
-    public static WebSite AddScript(this WebSite page, string path) =>
-        page.AddScripts([path]);
-    public static WebSite AddScripts(this WebSite page, List<string> paths)
+    public static WebSite AddScript(this WebSite page, Script scriptPath) =>
+        page.AddScripts([scriptPath]);
+    public static WebSite AddScripts(this WebSite page, List<Script> scriptsPath)
     {
-        paths.ForEach(page.Context.Scripts.Add);
+        scriptsPath.ForEach(page.Context.Scripts.Add);
 
         return page;
     }

@@ -11,13 +11,13 @@ public class ScriptsElement
         Scripts = [];
     }
 
-    public void Add(string filePath)
+    public void Add(Script script)
     {
-        Scripts.Add(new(filePath));
+        Scripts.Add(script);
     }
 
-    public void Add(List<string> filePaths)
+    public void Add(List<Script> scripts)
     {
-        filePaths.ForEach(f => Scripts.Add(new(f)));
+        scripts.ForEach(s => Scripts.Add(s));
     }
 }

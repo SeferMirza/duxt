@@ -1,19 +1,14 @@
+import { proxyFetch } from "./proxyFetch.js";
+import { projectCard } from "./projectCard.js";
+
 async function getPinnedProjects(login) {
   const result = [];
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-  const targetUrl = `${proxyUrl}https://github.com/${login}`;
 
-  const headers = {
-    Accept: "text/html",
-    origin: "*",
-  };
-
-  const response = await fetch(targetUrl, {
-    headers: headers,
-  });
+  const response = await proxyFetch(`https://github.com/${login}`);
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
   }
+
   const htmlContent = await response.text();
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlContent, "text/html");
@@ -66,8 +61,8 @@ async function main() {
           const mainLanguage = Object.keys(languages)[0];
           result.push({
             name: repository.name,
-            mainLanguage: mainLanguage,
-            htmlUrl: repository.html_url,
+            language: mainLanguage,
+            url: repository.html_url,
           });
         }
       }
@@ -75,31 +70,7 @@ async function main() {
       const projects = document.createElement("div");
       projects.className = "projects";
       result.forEach((project) => {
-        const card = document.createElement("div");
-        card.className = "card";
-
-        const title = document.createElement("h1");
-        title.className = "card-title";
-        title.innerText = project.name;
-
-        const cardContent = document.createElement("div");
-        cardContent.className = "card-content-container";
-
-        const contentTitle = document.createElement("h4");
-        contentTitle.innerText = project.mainLanguage;
-
-        const btn = document.createElement("a");
-        btn.className = "btn";
-        btn.innerText = "Learn More";
-        btn.href = project.htmlUrl;
-
-        cardContent.appendChild(contentTitle);
-        cardContent.appendChild(btn);
-
-        card.appendChild(title);
-        card.appendChild(cardContent);
-
-        projects.appendChild(card);
+        projects.appendChild(projectCard(project));
       });
       const projectList = document.getElementById("projects-container");
       projectList.appendChild(projects);

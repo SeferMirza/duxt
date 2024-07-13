@@ -83,7 +83,10 @@ public class IndexPage : IBodyContent
                 ("h1", new() { AlignContent = "center" })
             ]
         );
-        context.Scripts.Add("./scripts/main.js");
+        context.Scripts.Add(new Script("./scripts/main.js")
+        {
+            OtherProperties = new () { {"type", "module"} }
+        });
 
         return
             new Div
