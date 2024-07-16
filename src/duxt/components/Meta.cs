@@ -8,8 +8,8 @@ public class Meta(string? name = default, string? content = default, string? pro
     public override string Display()
     {
         if(name != null) OtherProperties.Add("name", name);
-        if(content != null) OtherProperties.Add("name", content);
-        if(property != null) OtherProperties.Add("name", property);
+        if(content != null) OtherProperties.Add("content", content);
+        if(property != null) OtherProperties.Add("property", property);
 
         return base.Display();
     }

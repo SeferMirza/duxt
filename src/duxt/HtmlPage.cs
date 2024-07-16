@@ -7,13 +7,11 @@ namespace duxt;
 public sealed class WebSite
 {
     public readonly WebContext Context;
-    public readonly HttpClient Client;
     public readonly Dictionary<Type, string> Pages;
 
     public WebSite()
     {
         Context = new();
-        Client = new();
         Pages = [];
     }
 
@@ -22,7 +20,7 @@ public sealed class WebSite
         var bodyComponent = new T() as IBodyContent;
         // BodyComponents must be called before context.HeadElement is displayed
         // because the Title, Links and Metas can be added in the BodyComponent.
-        var body = bodyComponent.Invoke(Context, Client);
+        var body = bodyComponent.Invoke(Context);
         var html = new Html
         {
             Slot = [

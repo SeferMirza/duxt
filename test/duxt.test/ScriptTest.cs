@@ -8,9 +8,9 @@ public class ScriptTest
     class TestComponent : Component;
     class TestPage : IBodyContent
     {
-        public IComponent Invoke(WebContext context, HttpClient client)
+        public IComponent Invoke(WebContext context)
         {
-            context.Scripts.Add("test.js");
+            context.Scripts.Add(new Script("test.js"));
 
             return new TestComponent();
         }
@@ -23,7 +23,14 @@ public class ScriptTest
 
         builder.AddBodySlot<TestPage>();
 
-        Assert.That(builder.Context.Scripts.Scripts.Contains("test.js"));
+        Assert.That(
+            builder.Context.Scripts.Scripts.Any(script =>
+                {
+                    script.OtherProperties.TryGetValue("src", out var path);
+                    return path == "test.js";
+                }
+            )
+        );
     }
 
     [Test]

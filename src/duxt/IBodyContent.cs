@@ -1,9 +1,8 @@
-
 using duxt.component;
 
 namespace duxt;
 
 public interface IBodyContent
 {
-    IComponent Invoke(WebContext context, HttpClient client);
+    IComponent Invoke(WebContext context);
 }

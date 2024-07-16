@@ -5,7 +5,7 @@ namespace duxt.app.pages;
 
 public class IndexPage : IBodyContent
 {
-    public IComponent Invoke(WebContext context, HttpClient client)
+    public IComponent Invoke(WebContext context)
     {
         context.Styles.Add(
             [

@@ -1,5 +1,3 @@
-using duxt.templates;
-
 namespace duxt.component;
 
 public class Script(string src)
@@ -12,6 +10,6 @@ public class Script(string src)
     {
         OtherProperties.Add("src", src);
         var properties = string.Join(" ", OtherProperties.Select(s => $" {s.Key}=\"{s.Value}\""));
-        return @$"<script {properties}></script>";
+        return @$"<script{properties}></script>";
     }
 }
