@@ -2,8 +2,9 @@ namespace duxt.styles;
 
 public class Styles
 {
-    #region fields
     private readonly List<(string, object)> _css = [];
+
+    #region fields
     private string _alignItems = "left";
     private string _alignContent = "left";
     private string _alignSelf = "left";
@@ -517,7 +518,7 @@ public class Styles
             _clear = value;
         }
     }
-    public string Column
+    public string Columns
     {
         get { return _columns; }
         set {
@@ -1438,6 +1439,7 @@ public class Styles
         }
     }
     #endregion
+
     public string DisplayYDirection() => DisplayStyles("\n");
 
     public string DisplayXDirection() => DisplayStyles(" ");
