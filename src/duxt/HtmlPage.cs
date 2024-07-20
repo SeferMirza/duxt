@@ -1,9 +1,10 @@
+using System.Text.RegularExpressions;
 using duxt.component;
 using duxt.exception;
 
 namespace duxt;
 
-public sealed class WebSite
+public sealed partial class WebSite
 {
     public readonly WebContext Context;
     public readonly Dictionary<Type, string> Pages;
@@ -42,5 +43,24 @@ public sealed class WebSite
     }
 
     public string DisplayPage<T>() where T : IBodyContent =>
-        Pages.TryGetValue(typeof(T), out string? page) ? page : throw new PageNotExists<T>();
+        Pages.TryGetValue(typeof(T), out string? page)
+        ? NoIndentation().Replace(page, m =>
+            {
+                if (m.Value.Contains('<'))
+                {
+                    return "<";
+                }
+                else if (m.Value.Contains('>'))
+                {
+                    return ">";
+                }
+                else
+                {
+                    return " ";
+                }
+            })
+        : throw new PageNotExists<T>();
+
+    [GeneratedRegex(@"\s*<|>\s*|\s{2,}|\r\n|\r|\n")]
+    private static partial Regex NoIndentation();
 }

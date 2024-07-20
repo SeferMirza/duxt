@@ -19,29 +19,13 @@ public class HtmlPageTest
     [Test]
     public void HtmlPage_has_a_template_that_it_generates_by_default()
     {
-        var expected =
-@"<html>
-  <head>
-    <title>
-        Duxt
-    </title>
-  </head>
-  <body>
-    <div>
-    </div>
-  </body>
-  <style>
-  </style>
-</html>
-";
+        var expected = @"<html><head><title>Duxt</title></head><body><div></div></body><style></style></html>";
         var builder = Builder.CreateHtml();
         builder.AddBodySlot<TestPage>();
 
         var actual = builder.DisplayPage<TestPage>();
 
-        // TODO - indentation does not work correctly in html generation. so, i
-        // ignored indentation and just focused on the elements..
-        Assert.That(actual.IgnoreIndentation(), Is.EqualTo(expected.IgnoreIndentation()));
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]

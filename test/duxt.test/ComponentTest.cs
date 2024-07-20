@@ -32,34 +32,12 @@ public class ComponentTest
     [Test]
     public void All_default_component_display_correctly()
     {
-        var expected =
-    @"<html>
-  <head>
-    <title> title </title>
-    <link href=""link href"" rel=""link rel"">
-    <meta name=""meta name"" content=""meta content"" property=""meta property"">
-  </head>
-  <body>
-    <div>
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <h4>h4</h4>
-      <a href=""a href"">a text</a>
-      <img src=""src"">
-      <p>p</p>
-    </div>
-  </body>
-  <style>
-  </style>
-</html>
-";
+        var expected = @"<html><head><title>title</title><link href=""link href"" rel=""link rel""><meta name=""meta name"" content=""meta content"" property=""meta property""></head><body><div><h1>h1</h1><h2>h2</h2><h4>h4</h4><a href=""a href"">a text</a><img src=""src""><p>p</p></div></body><style></style></html>";
         var builder = Builder.CreateHtml();
         builder.AddBodySlot<TestPage>();
 
         var actual = builder.DisplayPage<TestPage>();
 
-        // TODO - indentation does not work correctly in html generation. so, i
-        // ignored indentation and just focused on the elements..
-        Assert.That(actual.IgnoreIndentation(), Is.EqualTo(expected.IgnoreIndentation()));
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }
