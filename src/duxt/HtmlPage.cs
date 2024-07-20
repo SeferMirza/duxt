@@ -1,6 +1,5 @@
 using duxt.component;
 using duxt.exception;
-using duxt.scripts;
 
 namespace duxt;
 

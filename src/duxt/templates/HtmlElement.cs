@@ -20,9 +20,10 @@ public static class HtmlTemplates
 
     public static string OpenCloseElement(this IComponent component)
     {
-        if(component.Slot == null || component.Slot.Count == 0) return component.VoidElement();
+        var slot = component.Slot;
+        if(slot == null) slot = [];
 
-        var slotDisplays= component.Slot.Select(s => s.Display());
+        var slotDisplays= slot.Select(s => s.Display());
         var slotDisplayString = slotDisplays.Any() ? string.Join("\n", slotDisplays) : string.Empty;
         (string elementClass, string elementId, string stylesDisplay, string otherProperties) = component.ElementProperties();
 

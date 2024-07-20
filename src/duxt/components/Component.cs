@@ -29,7 +29,7 @@ public abstract class Component : IComponent
         Tag == "source" ||
         Tag == "track" ||
         Tag == "wbr";
-    public bool IsSelfClose => !IsVoid && Slot == null;
+    public bool IsSelfClose => !IsVoid && Slot == null && Tag != "div";
 
     public virtual string Display()
     {

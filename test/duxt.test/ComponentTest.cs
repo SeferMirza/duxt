@@ -5,7 +5,7 @@ namespace duxt.test;
 [TestFixture]
 public class ComponentTest
 {
-        class TestComponent : Component
+    class TestComponent : Component
     {
         public override List<IComponent>? Slot { get; set; } = [
             new H1(text: "h1"),
@@ -33,7 +33,7 @@ public class ComponentTest
     public void All_default_component_display_correctly()
     {
         var expected =
-@"<html>
+    @"<html>
   <head>
     <title> title </title>
     <link href=""link href"" rel=""link rel"">
