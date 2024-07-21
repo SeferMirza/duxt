@@ -1,5 +1,5 @@
+using duxt.component;
 using duxt.head;
-using duxt.scripts;
 using duxt.styles;
 
 namespace duxt;
@@ -7,13 +7,13 @@ namespace duxt;
 public class WebContext : IWebContext
 {
     public Heads Heads { get; }
-    public StylesElement Styles { get; }
-    public ScriptsElement Scripts { get; set; }
+    public List<(string styleName, Styles styles)> Styles { get; }
+    public List<Script> Scripts { get; set; }
 
     public WebContext()
     {
         Heads = new();
-        Styles = new();
-        Scripts = new();
+        Styles = [];
+        Scripts = [];
     }
 }

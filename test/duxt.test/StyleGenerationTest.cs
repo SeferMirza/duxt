@@ -17,7 +17,7 @@ public class StyleGenerationTest
     {
         public IComponent Invoke(WebContext context)
         {
-            context.Styles.Add([
+            context.Styles.AddRange([
               (".duxtTest", new(){ Color = "red" }),
               ("div", new(){ BackgroundColor = "red", TextDecoration = "none" })
             ]);

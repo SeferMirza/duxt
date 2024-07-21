@@ -28,7 +28,7 @@ public class StyleGeneration
     {
         public IComponent Invoke(WebContext context)
         {
-            context.Styles.Add([
+            context.Styles.AddRange([
               (".duxtClass", new(){ Color = "red" }),
               (".test", new(){ AlignItems = "center" }),
             ]);

@@ -26,7 +26,7 @@ public sealed partial class WebSite
             Slot = [
                 new Head
                 {
-                    Slot = [Context.Heads.Title, .. Context.Heads.Links, .. Context.Heads.Metas, .. Context.Scripts.Scripts]
+                    Slot = [Context.Heads.Title, .. Context.Heads.Links, .. Context.Heads.Metas, .. Context.Scripts]
                 },
                 new Body
                 {

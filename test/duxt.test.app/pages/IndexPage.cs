@@ -7,7 +7,7 @@ public class IndexPage : IBodyContent
 {
     public IComponent Invoke(WebContext context)
     {
-        context.Styles.Add(
+        context.Styles.AddRange(
             [
                 ("body", new() { Margin = "0", BackgroundColor = "black", Color = "white" }),
                 (".container", new() { FlexDirection = "column", AlignItems = "center" }),
