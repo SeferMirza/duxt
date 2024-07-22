@@ -1,4 +1,5 @@
 using duxt.component;
+using duxt.styles;
 
 namespace duxt.test;
 
@@ -39,9 +40,17 @@ public class StyleGenerationTest
     }
 
     [Test]
-    [Ignore("tbd")]
     public void Element_style_generation()
     {
-        // TBD
+        var expected = "background-color: red; color: yellow;";
+        var style = new Styles
+        {
+            BackgroundColor = "red",
+            Color = "yellow"
+        };
+
+        var actual = style.DisplayXDirection();
+
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }
