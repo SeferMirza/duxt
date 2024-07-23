@@ -1,11 +1,12 @@
-const gitHubBase = "https://github.com/";
 const gitHubWebhookBase = "https://webhook.site/";
+const gitHubBase = "https://github.com/";
 const gitHubAPIBase = "https://api.github.com/";
+const debug = true;
 
 async function getPinnedRepositories(login) {
   const result = [];
 
-  const response = await fetch(`${gitHubWebhookBase}${login}`,
+  const response = await fetch(`${debug ? gitHubWebhookBase : gitHubBase}${login}`,
     {
       headers: {
         "origin": "*"
@@ -44,8 +45,11 @@ const gitHubAPIHeaders = {
 async function getUserRepositories(login) {
   try {
     const response = await fetch(
-      `${gitHubAPIBase}users/${login}/repos`,
-      { headers: gitHubAPIHeaders }
+      debug ? `${gitHubWebhookBase}${login}` : `${gitHubAPIBase}users/${login}/repos`,
+      {
+        headers: gitHubAPIHeaders,
+        method: "GET"
+      }
     );
 
     return await response.json();
@@ -57,8 +61,11 @@ async function getUserRepositories(login) {
 async function getUserRepositoryLanguage(login, repositoryName) {
   try {
     const languages = await fetch(
-      `${gitHubAPIBase}repos/${login}/${repositoryName}/languages`,
-      { headers: gitHubAPIHeaders }
+      debug ? `${gitHubWebhookBase}${login}` : `${gitHubAPIBase}repos/${login}/${repositoryName}/languages`,
+      {
+        headers: gitHubAPIHeaders,
+        method: "GET"
+      }
     );
 
     return await languages.json();

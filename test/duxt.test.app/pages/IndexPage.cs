@@ -9,8 +9,7 @@ public class IndexPage : IBodyContent
     {
         context.Styles.AddRange(
             [
-                ("body", new() { Margin = "0", BackgroundColor = "black", Color = "white" }),
-                (".container", new() { FlexDirection = "column", AlignItems = "center" }),
+                CommonStyles.Container,
                 (".column", new() { FlexDirection = "column" }),
                 (".banner",  new() {
                     Height = "20vh",
@@ -18,11 +17,6 @@ public class IndexPage : IBodyContent
                     BackgroundImage = "url(\"./images/code.jpg\")",
                     BackgroundRepeat = "no-repeat",
                     BackgroundSize = "cover"
-                }),
-                (".centered-content",  new() {
-                    Display = "flex",
-                    JustifyContent = "center",
-                    AlignItems = "center"
                 }),
                 (".about-container",  new() { Width = "78%" }),
                 (".projects-container", new() { Width = "80%" }),
@@ -50,10 +44,6 @@ public class IndexPage : IBodyContent
                     Transition = "0.3s",
                     Width = "300px",
                     Margin = "10px"
-                }),
-                (".monospace",  new() {
-                    FontFamily = "VT323, monospace",
-                    FontWeight = "400"
                 }),
                 (".card", new() {
                     BoxShadow = "0 4px 8px 0 rgba(255,255,255,0.2)",

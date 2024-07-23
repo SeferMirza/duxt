@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using duxt.component;
 using duxt.exception;
+using duxt.styles;
 
 namespace duxt;
 
@@ -41,6 +42,11 @@ public sealed partial class WebSite
             throw new BodyContentExists<T>();
         }
     }
+
+    public void AddGlobalStyle(string styleName, Styles style) =>
+        AddGlobalStyles([(styleName, style)]);
+    public void AddGlobalStyles(List<(string, Styles)> styles) =>
+        Context.Styles.AddRange(styles);
 
     public string DisplayPage<T>() where T : IBodyContent =>
         Pages.TryGetValue(typeof(T), out string? page)

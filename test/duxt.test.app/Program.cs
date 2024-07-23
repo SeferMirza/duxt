@@ -1,4 +1,5 @@
 using duxt;
+using duxt.app;
 using duxt.app.pages;
 using Microsoft.Extensions.FileProviders;
 
@@ -12,8 +13,14 @@ web.AddLinks([
     new(href: "https://fonts.gstatic.com", rel: "preconnect"),
     new(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet")
 ]);
+web.AddGlobalStyles([
+    CommonStyles.Body,
+    CommonStyles.Content,
+    CommonStyles.Font
+]);
 
 web.AddBodySlot<IndexPage>();
+web.AddBodySlot<AboutPage>();
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -31,5 +38,6 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.MapGet("/", () => Results.Content(web.DisplayPage<IndexPage>(), "text/html"));
+app.MapGet("/about", () => Results.Content(web.DisplayPage<AboutPage>(), "text/html"));
 
 app.Run();
