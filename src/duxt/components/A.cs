@@ -7,7 +7,7 @@ public class A(string href, string text)
 
     public override string Display()
     {
-        OtherProperties.Add("href", href);
+        OtherProperties.TryAdd("href", href);
         Slot?.Add(new Text(text));
 
         return base.Display();

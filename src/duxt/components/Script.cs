@@ -8,7 +8,7 @@ public class Script(string src)
 
     public override string Display()
     {
-        OtherProperties.Add("src", src);
+        OtherProperties.TryAdd("src", src);
         var properties = string.Join(" ", OtherProperties.Select(s => $" {s.Key}=\"{s.Value}\""));
         return @$"<script{properties}></script>";
     }

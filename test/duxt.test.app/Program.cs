@@ -13,6 +13,7 @@ web.AddLinks([
     new(href: "https://fonts.gstatic.com", rel: "preconnect"),
     new(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet")
 ]);
+web.AddMeta(new(properties: ("charset", "UTF8")));
 web.AddGlobalStyles([
     CommonStyles.Body,
     CommonStyles.Content,
@@ -21,6 +22,9 @@ web.AddGlobalStyles([
 
 web.AddBodySlot<IndexPage>();
 web.AddBodySlot<AboutPage>();
+// web.AddBodySlot<BlogPage>();
+web.AddBodySlot<ContactPage>();
+web.AddBodySlot<PortfolioPage>();
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -39,5 +43,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.MapGet("/", () => Results.Content(web.DisplayPage<IndexPage>(), "text/html"));
 app.MapGet("/about", () => Results.Content(web.DisplayPage<AboutPage>(), "text/html"));
+// app.MapGet("/blog", () => Results.Content(web.DisplayPage<BlogPage>(), "text/html"));
+app.MapGet("/contact", () => Results.Content(web.DisplayPage<ContactPage>(), "text/html"));
+app.MapGet("/portfolio", () => Results.Content(web.DisplayPage<PortfolioPage>(), "text/html"));
 
 app.Run();

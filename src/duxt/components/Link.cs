@@ -6,8 +6,8 @@ public class Link(string href, string rel) : Component
     public override List<IComponent>? Slot { get; set; } = null;
     public override string Display()
     {
-        OtherProperties.Add("href", href);
-        OtherProperties.Add("rel", rel);
+        OtherProperties.TryAdd("href", href);
+        OtherProperties.TryAdd("rel", rel);
 
         return base.Display();
     }
