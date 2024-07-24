@@ -1,7 +1,6 @@
 using duxt;
 using duxt.app;
-using duxt.app.pages;
-using Microsoft.Extensions.FileProviders;
+using duxt.app.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,31 +19,10 @@ web.AddGlobalStyles([
     CommonStyles.Font
 ]);
 
-web.AddBodySlot<IndexPage>();
-web.AddBodySlot<AboutPage>();
-// web.AddBodySlot<BlogPage>();
-web.AddBodySlot<ContactPage>();
-web.AddBodySlot<PortfolioPage>();
+web.AddPages();
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "images")
-    ),
-    RequestPath = "/images"
-});
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "scripts")
-    ),
-    RequestPath = "/scripts"
-});
+app.StaticFiles();
 
-app.MapGet("/", () => Results.Content(web.DisplayPage<IndexPage>(), "text/html"));
-app.MapGet("/about", () => Results.Content(web.DisplayPage<AboutPage>(), "text/html"));
-// app.MapGet("/blog", () => Results.Content(web.DisplayPage<BlogPage>(), "text/html"));
-app.MapGet("/contact", () => Results.Content(web.DisplayPage<ContactPage>(), "text/html"));
-app.MapGet("/portfolio", () => Results.Content(web.DisplayPage<PortfolioPage>(), "text/html"));
+app.AddRoutes(web);
 
 app.Run();
