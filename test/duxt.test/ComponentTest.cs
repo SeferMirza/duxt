@@ -24,7 +24,7 @@ public class ComponentTest
         {
             context.Heads.Title = new(title: "title");
             context.Heads.Links.Add(new(href: "link href", rel: "link rel"));
-            context.Heads.Metas.Add(new(name: "meta name", content: "meta content", property: "meta property"));
+            context.Heads.Metas.Add(new(("name", "meta name"), ("content", "meta content"), ("property", "meta property")));
 
             return new TestComponent();
         }

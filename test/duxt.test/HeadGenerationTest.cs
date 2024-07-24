@@ -42,10 +42,10 @@ public class HeadGenerationTest
     [Test]
     public void Generate_metas_as_void_element_when_given_single()
     {
-        var expected = @"<html><head><title>Duxt</title><meta name=""og"" content=""duxt"" property=""og:title""></head><body></body><style></style></html>";
+        var expected = @"<html><head><title>Duxt</title><meta name=""og"" property=""og:title"" content=""duxt""></head><body></body><style></style></html>";
         var builder = Builder.CreateHtml();
 
-        builder.AddMeta(new(name: "og", property: "og:title", content: "duxt"));
+        builder.AddMeta(new(("name", "og"), ("property", "og:title"), ("content", "duxt")));
         builder.AddBodySlot<TestPage>();
 
         Assert.That(builder.DisplayPage<TestPage>(), Is.EqualTo(expected));
@@ -57,7 +57,10 @@ public class HeadGenerationTest
         var expected = @"<html><head><title>Duxt</title><meta name=""og"" content=""duxt"" property=""og:title""><meta name=""og"" content=""someimage.com"" property=""og:image""></head><body></body><style></style></html>";
         var builder = Builder.CreateHtml();
 
-        builder.AddMetas([new("og", "duxt", "og:title"), new("og", "someimage.com", "og:image")]);
+        builder.AddMetas([
+            new(("name", "og"), ("content", "duxt"), ("property", "og:title")),
+            new(("name", "og"), ("content", "someimage.com"), ("property", "og:image"))
+        ]);
         builder.AddBodySlot<TestPage>();
 
         Assert.That(builder.DisplayPage<TestPage>(), Is.EqualTo(expected));

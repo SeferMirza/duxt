@@ -38,8 +38,8 @@ public class StyleGeneration
               new(href: "styles2.css", rel: "stylesheet")
             ]);
             context.Heads.Metas.AddRange([
-              new(name: "og", content: "duxt", property: "og:title"),
-              new(name: "og", content: "duxt.jpg", property: "og:image"),
+              new(("name", "og"), ("content", "duxt"), ("property", "og:title")),
+              new(("name", "og"), ("content", "duxt.jpg"), ("property", "og:image")),
             ]);
 
             return new TestComponent();
