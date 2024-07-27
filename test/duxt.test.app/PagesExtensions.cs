@@ -1,6 +1,6 @@
 using duxt.app.pages;
 
-namespace duxt.app.services;
+namespace duxt.app;
 
 public static class PagesExtensions
 {
@@ -8,8 +8,7 @@ public static class PagesExtensions
     {
         web.AddBodySlot<IndexPage>();
         web.AddBodySlot<AboutPage>();
-        // web.AddBodySlot<BlogPage>();
-        web.AddBodySlot<ContactPage>();
-        web.AddBodySlot<PortfolioPage>();
+        web.AddBodySlot<LinksPage>();
+        web.AddBodySlot<SkillsPage>();
     }
 }

@@ -23,7 +23,7 @@ public static class HtmlTemplates
         var slot = component.Slot;
         if(slot == null) slot = [];
 
-        var slotDisplays= slot.Select(s => s.Display());
+        var slotDisplays = slot.Select(s => s.Display());
         var slotDisplayString = slotDisplays.Any() ? string.Join("\n", slotDisplays) : string.Empty;
         (string elementClass, string elementId, string stylesDisplay, string otherProperties) = component.ElementProperties();
 
@@ -44,7 +44,14 @@ public static class HtmlTemplates
             ? $" style=\"{component.Styles.DisplayXDirection()}\""
             : string.Empty;
         var otherProperties = component.OtherProperties != default
-            ? string.Join(" ", component.OtherProperties.Select(s => $" {s.Key}=\"{s.Value}\""))
+            ? string.Join(
+                " ",
+                component.OtherProperties.Select(s =>
+                    s.Value == string.Empty
+                        ? $" {s.Key}"
+                        : $" {s.Key}=\"{s.Value}\""
+                    )
+            )
             : string.Empty;
 
         return (elementClass, elementId, stylesDisplay, otherProperties);

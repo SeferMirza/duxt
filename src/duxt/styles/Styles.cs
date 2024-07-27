@@ -8,6 +8,7 @@ public class Styles
     private string _alignItems = "left";
     private string _alignContent = "left";
     private string _alignSelf = "left";
+    private string _animation = "none";
     private string _background = "none";
     private string _backgroundColor = "#000000";
     private string _backgroundImage = "none";
@@ -195,6 +196,14 @@ public class Styles
         get { return _alignSelf; }
         set {
             _css.Add(("align-self", value));
+            _alignSelf = value;
+        }
+    }
+    public string Animation
+    {
+        get { return _animation; }
+        set {
+            _css.Add(("animation", value));
             _alignSelf = value;
         }
     }

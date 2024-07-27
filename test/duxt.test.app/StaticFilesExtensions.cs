@@ -1,7 +1,6 @@
-using duxt.app.pages;
 using Microsoft.Extensions.FileProviders;
 
-namespace duxt.app.services;
+namespace duxt.app;
 
 public static class StaticFilesExtensions
 {

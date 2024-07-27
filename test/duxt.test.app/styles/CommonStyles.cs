@@ -20,18 +20,11 @@ public static class CommonStyles
             ".container",
             new Styles
             {
-                FlexDirection = "column",
-                AlignItems = "center"
-            }
-        );
-
-    public static (string, Styles) Content =>
-        (
-            ".centered-content",
-            new() {
                 Display = "flex",
+                FlexDirection = "column",
                 JustifyContent = "center",
-                AlignItems = "center"
+                AlignItems = "center",
+                Height = "100%"
             }
         );
 
@@ -41,6 +34,17 @@ public static class CommonStyles
             new() {
                 FontFamily = "VT323, monospace",
                 FontWeight = "400"
+            }
+        );
+
+    public static (string, Styles) Terminal =>
+        (
+            "#terminal",
+            new() {
+                Width = "750px",
+                Height = "450px",
+                //BackgroundColor = "midnightblue",
+                BorderRadius = "15px"
             }
         );
 }
