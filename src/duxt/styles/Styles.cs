@@ -87,6 +87,7 @@ public class Styles
     private string _fontStyle = "none";
     private string _fontSynthesis = "none";
     private string _fontWeight = "none";
+    private string _gap = "none";
     private string _grid = "none";
     private string _gridArea = "none";
     private string _gridAutoColumns = "none";
@@ -113,6 +114,7 @@ public class Styles
     private string _listStyle = "none";
     private string _listStyleType = "none";
     private string _marginBottom = "none";
+    private string _marginBlock = "none";
     private string _marginLeft = "none";
     private string _marginRight = "none";
     private string _marginTop = "none";
@@ -799,6 +801,14 @@ public class Styles
             _fontWeight = value;
         }
     }
+    public string Gap
+    {
+        get { return _gap; }
+        set {
+            _css.Add(("gap", value));
+            _gap = value;
+        }
+    }
     public string Grid
     {
         get { return _grid; }
@@ -997,6 +1007,14 @@ public class Styles
         set {
             _css.Add(("list-style-type", value));
             _listStyleType = value;
+        }
+    }
+    public string MarginBlock
+    {
+        get { return _marginBlock; }
+        set {
+            _css.Add(("margin-block", value));
+            _marginBlock = value;
         }
     }
     public string MarginBottom

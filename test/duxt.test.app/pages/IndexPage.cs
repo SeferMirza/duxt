@@ -6,7 +6,9 @@ public class IndexPage : IBodyContent
 {
     public IComponent Invoke(WebContext context)
     {
-        context.Scripts.Add(new("scripts/main.js"));
+        var terminalJs = new Script();
+        terminalJs.OtherProperties.Add("src", "scripts/terminal.js");
+        context.Scripts.Add(terminalJs);
 
         return
             new Div
@@ -26,21 +28,25 @@ public class IndexPage : IBodyContent
                                         Class = "command",
                                         Slot = [new Text("about")]
                                     },
-                                    new Text("<br>To see my links:&nbsp;"),
+                                    new Br(),
+                                    new Text("To see my links:&nbsp;"),
                                     new Span{
                                         Class = "command",
                                         Slot = [new Text("links")]
                                     },
-                                    new Text("<br>To see my skills:&nbsp;"),
+                                    new Br(),
+                                    new Text("To see my skills:&nbsp;"),
                                     new Span{
                                         Class = "command",
                                         Slot = [new Text("skills")]
                                     },
-                                    new Text("<br>To clear history:&nbsp;"),
+                                    new Br(),
+                                    new Text("To clear history:&nbsp;"),
                                     new Span{
                                         Class = "command",
                                         Slot = [new Text("cls")]
-                                    }
+                                    },
+                                    new Br()
                                 ]
                             },
                             new Div
@@ -52,14 +58,15 @@ public class IndexPage : IBodyContent
                                         Id = "label",
                                         OtherProperties = {{"for", "input"}},
                                         Slot = [
-                                            new Text("C:\\> ")
+                                            new Text("C:\\>&nbsp;")
                                         ]
                                     },
                                     new Input("text")
                                     {
                                         Id = "input",
                                         OtherProperties = {{"name", "input"}, {"autofocus", string.Empty}}
-                                    }
+                                    },
+                                    new Br()
                                 ]
                             }
                         ]

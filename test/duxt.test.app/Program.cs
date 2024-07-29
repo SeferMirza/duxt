@@ -5,20 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 var web = Builder.CreateHtml();
-web.SetTitle("duxt");
-web.AddLinks([
-    // new(href: "https://fonts.googleapis.com", rel: "preconnect"),
-    // new(href: "https://fonts.gstatic.com", rel: "preconnect"),
-    // new(href: "https://fonts.googleapis.com/css2?family=VT323&display=swap", rel: "stylesheet"),
-    new(href: "scripts/cssFunctions.css", rel: "stylesheet")
-]);
+web.AddLink(new(rel: "icon", href: "data:;base64,iVBORw0KGgo="));
 web.AddMeta(new(properties: ("charset", "UTF8")));
-web.AddGlobalStyles([
-    CommonStyles.Body,
-    CommonStyles.Container,
-    CommonStyles.Font,
-    CommonStyles.Terminal
-]);
+web.AddGlobalStyles(CommonStyles.GetAllStyles);
 
 web.AddPages();
 
@@ -26,4 +15,11 @@ app.StaticFiles();
 
 app.AddRoutes(web);
 
-app.Run();
+if(args.Contains("--ssg=true"))
+{
+    web.Publish();
+}
+else
+{
+    app.Run();
+}
