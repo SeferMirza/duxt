@@ -134,8 +134,7 @@ public static class CommonStyles
             "#history",
             new Styles
             {
-                WordWrap = "break-word",
-                Color = "#c98b19"
+                WordWrap = "break-word"
             }
         );
 
@@ -211,7 +210,7 @@ public static class CommonStyles
                 Width = "750px",
                 Height = "450px",
                 Padding = "10px",
-                BackgroundColor = "#2e2e2e",
+                BackgroundColor = "black",
                 Color = "#eaeaea",
                 BoxShadow = "0 0 10px 7px rgba(255, 255, 255, 0.3)",
                 FontFamily = @"""Cascadia Mono"", sans-serif",
