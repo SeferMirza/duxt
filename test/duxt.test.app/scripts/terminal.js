@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           return;
         }
         const labelValue = label.textContent;
-        history.innerHTML += `<br><span class="command">${labelValue} ${inputValue}</span><br>`;
+        history.innerHTML += `${history.innerHTML === "" ? "" : "<br>"}<span class="command">${labelValue} ${inputValue}</span><br><br>`;
 
         if (server) {
           await fetchContent(input.value);

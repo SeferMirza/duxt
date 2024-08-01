@@ -71,8 +71,7 @@ public static class CommonStyles
             "#label",
             new Styles
             {
-                FontWeight = "bold",
-                Color = "aqua"
+                FontWeight = "bold"
             }
         );
 
@@ -117,7 +116,7 @@ public static class CommonStyles
             ".note",
             new Styles
             {
-                Color = "lightgreen",
+                Color = "#969896",
             }
         );
 
@@ -147,7 +146,7 @@ public static class CommonStyles
             {
                 BackgroundColor = "transparent",
                 Border = "0",
-                Color = "aqua",
+                Color = "#eaeaea",
                 JustifyContent = "center",
                 FontSize = "16px",
                 Width = "100%",
@@ -196,6 +195,15 @@ public static class CommonStyles
             }
         );
 
+    public static (string, Styles) SpecialCharacter =>
+        (
+            ".special-character",
+            new Styles
+            {
+                Color = "darkblue"
+            }
+        );
+
     public static (string, Styles) Terminal =>
         (
             "#terminal",
@@ -204,10 +212,27 @@ public static class CommonStyles
                 Height = "450px",
                 Padding = "10px",
                 BackgroundColor = "#2e2e2e",
+                Color = "#eaeaea",
                 BoxShadow = "0 0 10px 7px rgba(255, 255, 255, 0.3)",
                 FontFamily = @"""Cascadia Mono"", sans-serif",
                 OverflowY = "scroll",
                 BorderRadius = "15px"
+            }
+        );
+
+    public static (string, Styles) Type =>
+        (
+            ".type",
+            new() {
+                Color = "#e78c45"
+            }
+        );
+
+    public static (string, Styles) Variable =>
+        (
+            ".variable",
+            new() {
+                Color = "#d54e52"
             }
         );
 
@@ -231,6 +256,42 @@ public static class CommonStyles
             InvisibleScrollbar,
             Pointer,
             SkillsContainer,
-            Terminal
+            SpecialCharacter,
+            Terminal,
+            Type,
+            Variable
         ];
 }
+
+/* Tomorrow Yellow */
+// .hljs-attribute {
+//   color: #e7c547;
+// }
+
+// /* Tomorrow Green */
+// .hljs-string,
+// .hljs-symbol,
+// .hljs-bullet,
+// .hljs-addition {
+//   color: #b9ca4a;
+// }
+
+// /* Tomorrow Blue */
+// .hljs-title,
+// .hljs-section {
+//   color: #7aa6da;
+// }
+
+// /* Tomorrow Purple */
+// .hljs-keyword,
+// .hljs-selector-tag {
+//   color: #c397d8;
+// }
+
+// .hljs-emphasis {
+//   font-style: italic;
+// }
+
+// .hljs-strong {
+//   font-weight: bold;
+// }

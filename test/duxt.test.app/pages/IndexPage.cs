@@ -58,7 +58,16 @@ public class IndexPage : IBodyContent
                                         Id = "label",
                                         OtherProperties = {{"for", "input"}},
                                         Slot = [
-                                            new Text("C:\\>&nbsp;")
+                                            new Span{
+                                                Class = "variable",
+                                                Slot = [new Text("you@sefermirza.dev")]
+                                            },
+                                            new Text(":"),
+                                            new Span{
+                                                Class = "special-character",
+                                                Slot = [new Text("~")]
+                                            },
+                                            new Text("$&nbsp;")
                                         ]
                                     },
                                     new Input("text")

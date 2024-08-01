@@ -10,7 +10,6 @@ public class AboutPage : IBodyContent
             new Div
             {
                 Slot = [
-                    new Br(),
                     new P(@$"I was born in Karabiga, a town in the Biga district of Çanakkale.
                     I completed my primary and secondary education at the local school. I
                     attended high school at Biga İçdaş Anadolu Technical High School,
