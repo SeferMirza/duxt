@@ -185,13 +185,13 @@ public static class CommonStyles
             }
         );
 
-    public static (string, Styles) SkillLists =>
+    public static (string, Styles) List =>
         (
-            ".skill-lists",
+            ".list",
             new Styles
             {
                 ListStyleType = "none",
-                PaddingLeft = "10px"
+                PaddingLeft = "20px"
             }
         );
 
@@ -271,7 +271,7 @@ public static class CommonStyles
             InputFocus,
             InvisibleScrollbar,
             Pointer,
-            SkillLists,
+            List,
             SpecialCharacter,
             Terminal,
             Type,
@@ -280,36 +280,3 @@ public static class CommonStyles
             ServerNameWithDomain
         ];
 }
-
-/* Tomorrow Yellow */
-// .hljs-attribute {
-//   color: #e7c547;
-// }
-
-// /* Tomorrow Green */
-// .hljs-string,
-// .hljs-symbol,
-// .hljs-bullet,
-// .hljs-addition {
-//   color: #b9ca4a;
-// }
-
-// /* Tomorrow Blue */
-// .hljs-title,
-// .hljs-section {
-//   color: #7aa6da;
-// }
-
-// /* Tomorrow Purple */
-// .hljs-keyword,
-// .hljs-selector-tag {
-//   color: #c397d8;
-// }
-
-// .hljs-emphasis {
-//   font-style: italic;
-// }
-
-// .hljs-strong {
-//   font-weight: bold;
-// }

@@ -10,5 +10,6 @@ public static class RouteExtensions
         app.MapGet("/about", () => Results.Content(web.Bodies[typeof(AboutPage)].Display(), "text/html"));
         app.MapGet("/links", () => Results.Content(web.Bodies[typeof(LinksPage)].Display(), "text/html"));
         app.MapGet("/skills", () => Results.Content(web.Bodies[typeof(SkillsPage)].Display(), "text/html"));
+        app.MapGet("/help", () => Results.Content(web.Bodies[typeof(HelpPage)].Display(), "text/html"));
     }
 }

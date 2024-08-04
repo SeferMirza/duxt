@@ -11,6 +11,7 @@ public static class PagesExtensions
         web.AddBodySlot<AboutPage>();
         web.AddBodySlot<LinksPage>();
         web.AddBodySlot<SkillsPage>();
+        web.AddBodySlot<HelpPage>();
     }
 
     static string RoutesTemplate(List<string> values) => @$"
