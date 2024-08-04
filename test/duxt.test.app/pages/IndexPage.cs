@@ -23,7 +23,9 @@ public class IndexPage : IBodyContent
                             {
                                 Id = "history",
                                 Slot = [
-                                    new Text("Welcome to my world!<br>To get information about me use:&nbsp;"),
+                                    new Text("Welcome to my world!"),
+                                    new Br(),
+                                    new Text("To get information about me use:&nbsp;"),
                                     new Span{
                                         Class = "command",
                                         Slot = [new Text("about")]

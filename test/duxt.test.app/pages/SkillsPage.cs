@@ -14,7 +14,7 @@ public class SkillsPage : IBodyContent
                     new P("I can assist you with"),
                     new Ul
                     {
-                        Class = "skill-lists",
+                        Class = "list",
                         Slot = [
                             new Li
                             {
