@@ -51,7 +51,7 @@ public class IndexPage : IBodyContent
                             },
                             new Div
                             {
-                                Class = "entry",
+                                Class = "shell",
                                 Slot = [
                                     new Label
                                     {
@@ -59,8 +59,12 @@ public class IndexPage : IBodyContent
                                         OtherProperties = {{"for", "input"}},
                                         Slot = [
                                             new Span{
-                                                Class = "variable",
-                                                Slot = [new Text("you@sefermirza.dev")]
+                                                Class = "username",
+                                                Slot = [new Text("you")]
+                                            },
+                                            new Span{
+                                                Class = "server-name-with-domain",
+                                                Slot = [new Text("@sefermirza.dev")]
                                             },
                                             new Text(":"),
                                             new Span{
@@ -74,8 +78,7 @@ public class IndexPage : IBodyContent
                                     {
                                         Id = "input",
                                         OtherProperties = {{"name", "input"}, {"autofocus", string.Empty}}
-                                    },
-                                    new Br()
+                                    }
                                 ]
                             }
                         ]

@@ -41,19 +41,18 @@ public static class CommonStyles
             ".command",
             new Styles
             {
-                Color = "aqua",
+                Color = "#70C0B1",
                 FontWeight = "bolder"
             }
         );
 
-    public static (string, Styles) Entry =>
+    public static (string, Styles) Shell =>
         (
-            ".entry",
+            ".shell",
             new Styles
             {
                 Display = "flex",
-                FlexDirection = "row",
-                JustifyContent = "center",
+                Margin = "6px 0 6px 0"
             }
         );
 
@@ -71,7 +70,8 @@ public static class CommonStyles
             "#label",
             new Styles
             {
-                FontWeight = "bold"
+                FontWeight = "bold",
+                PaddingTop = "3px"
             }
         );
 
@@ -107,7 +107,7 @@ public static class CommonStyles
             ".list-star",
             new Styles
             {
-                Color = "darkred",
+                Color = "#D54E53",
             }
         );
 
@@ -134,7 +134,8 @@ public static class CommonStyles
             "#history",
             new Styles
             {
-                WordWrap = "break-word"
+                WordWrap = "break-word",
+                Margin = "3px"
             }
         );
 
@@ -145,7 +146,7 @@ public static class CommonStyles
             {
                 BackgroundColor = "transparent",
                 Border = "0",
-                Color = "#eaeaea",
+                Color = "#70C0B1",
                 JustifyContent = "center",
                 FontSize = "16px",
                 Width = "100%",
@@ -178,15 +179,15 @@ public static class CommonStyles
             ".pointer",
             new Styles
             {
-                Color = "darkred",
+                Color = "#D54E53",
                 MarginTop = "auto",
                 MarginBottom = "auto"
             }
         );
 
-    public static (string, Styles) SkillsContainer =>
+    public static (string, Styles) SkillLists =>
         (
-            ".skills-container",
+            ".skill-lists",
             new Styles
             {
                 ListStyleType = "none",
@@ -199,7 +200,7 @@ public static class CommonStyles
             ".special-character",
             new Styles
             {
-                Color = "darkblue"
+                Color = "#79A6DA"
             }
         );
 
@@ -211,7 +212,7 @@ public static class CommonStyles
                 Height = "450px",
                 Padding = "10px",
                 BackgroundColor = "black",
-                Color = "#eaeaea",
+                Color = "#E7C547",
                 BoxShadow = "0 0 10px 7px rgba(255, 255, 255, 0.3)",
                 FontFamily = @"""Cascadia Mono"", sans-serif",
                 OverflowY = "scroll",
@@ -235,13 +236,29 @@ public static class CommonStyles
             }
         );
 
+    public static (string, Styles) UserName =>
+        (
+            ".username",
+            new() {
+                Color = "#79A6DA"
+            }
+        );
+
+    public static (string, Styles) ServerNameWithDomain =>
+        (
+            ".server-name-with-domain",
+            new() {
+                Color = "#D54E53"
+            }
+        );
+
     public static List<(string, Styles)> GetAllStyles =>
         [
             AboutParagraph,
             Body,
             Container,
             Command,
-            Entry,
+            Shell,
             Font,
             Label,
             LinksContainer,
@@ -254,11 +271,13 @@ public static class CommonStyles
             InputFocus,
             InvisibleScrollbar,
             Pointer,
-            SkillsContainer,
+            SkillLists,
             SpecialCharacter,
             Terminal,
             Type,
-            Variable
+            Variable,
+            UserName,
+            ServerNameWithDomain
         ];
 }
 
