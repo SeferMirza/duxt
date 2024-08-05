@@ -13,12 +13,13 @@ public static class StaticFilesExtensions
             ),
             RequestPath = "/scripts"
         });
+
         app.UseStaticFiles(new StaticFileOptions
         {
             FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), "static")
+                Path.Combine(Directory.GetCurrentDirectory(), "public")
             ),
-            RequestPath = "/static"
+            RequestPath = ""
         });
     }
 }

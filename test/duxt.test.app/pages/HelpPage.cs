@@ -23,61 +23,82 @@ public class HelpPage : IBodyContent
                         Slot = [
                             new Li
                             {
-                                Class = "command",
                                 Slot = [
                                     new Span
                                     {
                                         Class = "pointer",
                                         Slot = [new Text("⇒&nbsp;")]
                                     },
-                                    new Text("about")]
-                            },
-                            new Li
-                            {
-                                Class = "command",
-                                Slot = [
-                                    new Span
+                                    new Span()
                                     {
-                                        Class = "pointer",
-                                        Slot = [new Text("⇒&nbsp;")]
+                                        Class = "command",
+                                        Slot = [new Text("about")]
                                     },
-                                    new Text("links")
+                                    new Text("- About me.")
                                 ]
                             },
                             new Li
                             {
-                                Class = "command",
                                 Slot = [
                                     new Span
                                     {
                                         Class = "pointer",
                                         Slot = [new Text("⇒&nbsp;")]
                                     },
-                                    new Text("skills")
+                                    new Span()
+                                    {
+                                        Class = "command",
+                                        Slot = [new Text("links")]
+                                    },
+                                    new Text("- It lists my available links.")
                                 ]
                             },
                             new Li
                             {
-                                Class = "command",
                                 Slot = [
                                     new Span
                                     {
                                         Class = "pointer",
                                         Slot = [new Text("⇒&nbsp;")]
                                     },
-                                    new Text("cls")
+                                    new Span()
+                                    {
+                                        Class = "command",
+                                        Slot = [new Text("skills")]
+                                    },
+                                    new Text("- It shows the skills I have acquired in my career as a professional developer.")
                                 ]
                             },
                             new Li
                             {
-                                Class = "command",
                                 Slot = [
                                     new Span
                                     {
                                         Class = "pointer",
                                         Slot = [new Text("⇒&nbsp;")]
                                     },
-                                    new Text("help")
+                                    new Span()
+                                    {
+                                        Class = "command",
+                                        Slot = [new Text("cls")]
+                                    },
+                                    new Text("- It cleans the terminal.")
+                                ]
+                            },
+                            new Li
+                            {
+                                Slot = [
+                                    new Span
+                                    {
+                                        Class = "pointer",
+                                        Slot = [new Text("⇒&nbsp;")]
+                                    },
+                                    new Span()
+                                    {
+                                        Class = "command",
+                                        Slot = [new Text("help")]
+                                    },
+                                    new Text("- Lists available commands.")
                                 ]
                             }
                         ]

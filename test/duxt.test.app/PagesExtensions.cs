@@ -47,5 +47,12 @@ public static class PagesExtensions
                 File.Copy(filePath, $"../../generate/{filePath}", overwrite: true);
             }
         }
+
+        //public
+        string[] files = Directory.GetFiles("./public").Select(file => Path.GetFileName(file)).ToArray();
+        foreach(var file in files)
+        {
+            File.Copy($"./public/{file}", $"../../generate/{file}", overwrite: true);
+        }
     }
 }
