@@ -152,7 +152,7 @@ public static class CommonStyles
                 Width = "100%",
                 WordWrap = "break-word",
                 FontWeight = "bold",
-                FontFamily = @"""Cascadia Mono"", sans-serif",
+                FontFamily = @"""Ubuntu Mono"", monospace",
             }
         );
 
@@ -214,7 +214,7 @@ public static class CommonStyles
                 BackgroundColor = "black",
                 Color = "#E7C547",
                 BoxShadow = "0 0 10px 7px rgba(255, 255, 255, 0.3)",
-                FontFamily = @"""Cascadia Mono"", sans-serif",
+                FontFamily = @"""Ubuntu Mono"", monospace",
                 OverflowY = "scroll",
                 BorderRadius = "15px"
             }

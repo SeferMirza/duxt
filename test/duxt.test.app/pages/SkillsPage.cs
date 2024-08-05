@@ -114,9 +114,18 @@ public class SkillsPage : IBodyContent
                                 Class = "pointer",
                                 Slot = [new Text("⇒&nbsp;")]
                             },
-                            new P("Available for freelance, remote or contact based opportunities.")
+                            new P(string.Empty)
                             {
-                                Class = "note"
+                                Class = "note",
+                                Slot = [
+                                    new Text("Available for freelance, remote or contact based opportunities. Use the"),
+                                    new Span
+                                    {
+                                        Class = "command",
+                                        Slot = [new Text("'links'")]
+                                    },
+                                    new Text("command to see links to contact.")
+                                ]
                             }
                         ]
                     }

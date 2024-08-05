@@ -6,6 +6,10 @@ public class LinksPage : IBodyContent
 {
     public IComponent Invoke(WebContext context)
     {
+        context.Styles.Add(new(
+            ".cv",
+            new(){ Display = "flex", FlexDirection = "column", TextDecoration = "none", Color = "#70C0B1" }
+        ));
         return
             new Div
             {
@@ -31,6 +35,15 @@ public class LinksPage : IBodyContent
                         Slot = [
                             new Text(@"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512""><path fill=""#70C0B1"" d=""M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z""/></svg>")
                         ]
+                    },
+                    new A(href: "/static/resume.pdf", text: "")
+                    {
+                        Class = "link-box cv",
+                        Slot = [
+                            new Text(@"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 384 512""><path fill=""#70C0B1"" d=""M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z""/></svg>"),
+                            new Text("Resume")
+                        ],
+                        OtherProperties = {{"download", "Sefer Mirza CV.pdf"}}
                     }
                 ]
             };
