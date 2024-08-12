@@ -9,6 +9,7 @@ public static class PagesExtensions
     {
         web.AddBodySlot<IndexPage>();
         web.AddBodySlot<AboutPage>();
+        web.AddBodySlot<BooksPage>();
         web.AddBodySlot<LinksPage>();
         web.AddBodySlot<SkillsPage>();
         web.AddBodySlot<HelpPage>();

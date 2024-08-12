@@ -31,6 +31,12 @@ public class IndexPage : IBodyContent
                                         Slot = [new Text("about")]
                                     },
                                     new Br(),
+                                    new Text("To see list of books:&nbsp;"),
+                                    new Span{
+                                        Class = "command",
+                                        Slot = [new Text("books")]
+                                    },
+                                    new Br(),
                                     new Text("To see my links:&nbsp;"),
                                     new Span{
                                         Class = "command",
