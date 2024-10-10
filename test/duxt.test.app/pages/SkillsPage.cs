@@ -1,3 +1,4 @@
+using duxt.app.components;
 using duxt.component;
 
 namespace duxt.app.pages;
@@ -12,99 +13,16 @@ public class SkillsPage : IBodyContent
                 Class = "skills-container",
                 Slot = [
                     new P("I can assist you with"),
-                    new Ul
-                    {
-                        Class = "list",
-                        Slot = [
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("C#, JavaScript, Python(beginner)")]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text(".NET Core, ASP.NET Core, ASP.NET Core MVC")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("MSSQL, MYSQL")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("Node.js, Express.js")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("Git, GitHub")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("Docker")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("Flask")
-                                ]
-                            },
-                            new Li
-                            {
-                                Slot = [
-                                    new Span
-                                    {
-                                        Class = "list-star",
-                                        Slot = [new Text("★")]
-                                    },
-                                    new Text("NUnit")
-                                ]
-                            }
-                        ]
-                    },
+                    new StarList([
+                            "C#, JavaScript, Python(beginner)",
+                            ".NET Core, ASP.NET Core, ASP.NET Core MVC",
+                            "MSSQL, MYSQL, Sqlite, PostgreSQL",
+                            "Node.js, Express.js",
+                            "Git, GitHub",
+                            "Docker/Kubernetes",
+                            "Flask",
+                            "NUnit"
+                        ]),
                     new Div
                     {
                         Class = "not-container",

@@ -38,8 +38,8 @@ public class BooksPage : IBodyContent
                                     new Text("- Robert C. Martin"),
                                     new Span
                                     {
-                                        Class = "status-continues",
-                                        Slot = [new Text("Continues")]
+                                        Class = "status-done",
+                                        Slot = [new Text("Done")]
                                     }
                                 ]
                             },
