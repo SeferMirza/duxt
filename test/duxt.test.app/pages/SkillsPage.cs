@@ -18,11 +18,12 @@ public class SkillsPage : IBodyContent
                             ".NET Core, ASP.NET Core, ASP.NET Core MVC",
                             "MSSQL, MYSQL, Sqlite, PostgreSQL",
                             "Node.js, Express.js",
+                            "NUnit",
+                            "Flask",
                             "Git, GitHub",
                             "Docker/Kubernetes",
                             "Redis",
-                            "Flask",
-                            "NUnit"
+                            "AWS(EC2, RDS, S3)"
                         ]),
                     new Div
                     {
