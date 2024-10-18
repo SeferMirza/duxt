@@ -20,6 +20,7 @@ public class SkillsPage : IBodyContent
                             "Node.js, Express.js",
                             "Git, GitHub",
                             "Docker/Kubernetes",
+                            "Redis",
                             "Flask",
                             "NUnit"
                         ]),
